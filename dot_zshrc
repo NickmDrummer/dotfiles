@@ -1,0 +1,48 @@
+### ---- ZSH HOME -----------------------------------
+export ZSH=$HOME/.zsh
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+PATH=$PATH:~/usr/bin/
+
+
+source ~/path/to/fsh/fast-syntax-highlighting.plugin.zsh
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+
+### ---- Source other configs -----------------------------------
+[[ -f $ZSH/config/history.zsh ]] && source $ZSH/config/history.zsh
+
+
+
+autoload -Uz compinit && compinit
+
+### ---- Completion options and styling -----------------------------------
+zstyle ':completion:*' menu select # selectable menu
+zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]-_}={[:upper:][:lower:]_-}' 'r:|=*' 'l:|=* r:|=*'  # case insensitive completion
+zstyle ':completion:*' special-dirs true # Complete . and .. special directories
+zstyle ':completion:*' list-colors '' # colorize completion lists
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01' # colorize kill list
+
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=cyan,italic,underline"
+alias la="exa --icons -a --group-directories-first --git-ignore -l --no-permissions --no-time -h --git"
+alias ll="exa --icons --group-directories-first --git-ignore -l --no-permissions --no-time -h --git"
+
+### GIT ALIASES
+alias ga="git add ."
+alias gc="git commit -m"
+alias gs="git status"
+alias gl="git log"
+alias gd="git diff"
+alias gp="git push -u origin main"
+alias gcl="git clone"
+alias gch="git checkout"
+alias gcm="git checkout main"
+alias gb="git branch"
+alias d="clear"
+alias h="cd"
+alias b="cd .."
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+export PATH="/home/linuxbrew/.linuxbrew/opt/openjdk@17/bin:$PATH"
+eval "$(starship init zsh)"

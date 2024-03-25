@@ -1,0 +1,5 @@
+/* Set italics */
+.mtk3, .mtk4, .mtk6, .mtk7, .mtk10, .mtk11, .mtk12 {
+    font-family: 'CartographCF Nerd Font';
+    font-style: italic;
+}

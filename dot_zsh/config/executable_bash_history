@@ -1,0 +1,43 @@
+alsamixer
+ls
+sudo dnf update
+sudo dnf upgrade
+sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo
+sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
+dnf check-update
+sudno dnf install code
+sudo dnf install code
+code --install-extension chocolate-candies-0.0.1.vsix
+sudo mkdir -p /fonts/
+sudo mkdir -p fonts/
+cd
+sudo cp ~/Descargas/cartograph-cf/ /usr/local/share/fonts/
+sudo fc-cache -v
+ls
+cd
+cd Escritorio/
+cd Desktop/
+ls
+cd 
+cd Descargas/
+ls
+code --install-extension chocolate-candies-0.0.1.vsix
+ls
+cd desktop
+cd Desktop/
+git clone https://github.com/vinceliuice/WhiteSur-gtk-theme.git --depth=1
+ls
+cd WhiteSur-gtk-theme
+./install.sh
+git -version
+git -v
+npm -v
+node -v
+npm -v
+sudo apt install zsh
+sudo dnf install zsh
+clear
+zsh --version
+sudo lchsh $USER
