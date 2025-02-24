@@ -1,0 +1,96 @@
+kitty +kitten themes --reload-in=all
+
+
+# Geist Mono
+# font_family        Geist Mono Regular
+# bold_font          Geist Mono Bold
+
+# NOTE: Con italicas cursivas
+# italic_font        CartographCF Nerd Font Italic 
+# bold_italic_font   CartographCF Nerd Font Bold Italic 
+
+# NO Italicas:
+# italic_font        Berkeley Mono 
+# bold_italic_font   Berkeley Mono Bold
+
+
+# font_family      Monaspace Neon Regular
+# bold_font        Monaspace Neon Bold
+# italic_font      Monaspace Neon Italic
+# bold_italic_font Monaspace Neon Bold Italic
+
+# ss01 0 normal ss02 0 with dot ss03 slashed zero
+# font_features    BerkeleyMono-Regular +ss03 +liga
+# font_features    BerkeleyMono-Bold    +ss03 +liga
+font_size 14.0
+modify_font cell_height 120%
+
+# background_image ~/.config/kitty/1920x1080.png
+# background_image_layout scaled
+# dynamic_background_opacity yes
+# background_tint 0.4
+background_opacity 1.00
+#background_blur 1
+disable_ligatures cursor
+# cursor #cccccc
+mouse_hide_wait 3.0
+
+#allow_remote_control yes
+detect_urls yes
+sync_to_monitor no
+repaint_delay 10
+input_delay 2
+enable_audio_bell no
+scrollback_lines 2001
+
+visual_bell_duration 0.2
+window_alert_on_bell yes
+remember_window_size  no
+initial_window_width  1500
+initial_window_height 900
+
+enabled_layouts *
+
+window_padding_width 5 5 5 5
+
+hide_window_decorations no
+# wayland_titlebar_color system
+#window_logo_path ~/.config/kitty/homero.png
+# window_logo_alpha 0.3
+# window_logo_scale 75
+tab_bar_min_tabs 1
+tab_bar_edge top
+tab_bar_style powerline
+tab_powerline_style slanted
+tab_title_template          {title}{' :{}:'.format(num_windows) if num_windows > 1 else ''}
+# tab_bar_background #000000
+active_tab_foreground   #ffffff
+active_tab_background   #bd5eff
+active_tab_font_style   bold
+inactive_tab_foreground #5eff6c
+inactive_tab_background #161616
+inactive_tab_font_style normal
+linux_display_server wayland
+
+map f5 load_config_file
+map ctrl+shift+o new_tab_with_cwd
+
+# change themes with F1 and F2
+map f1 set_colors --configured ~/.config/kitty/themes/cyberdream.conf
+map f2 set_colors --configured ~/.config/kitty/themes/cyberdream-light.conf
+
+# BEGIN_KITTY_THEME
+# Cyberdream-Light
+# include ~/.config/kitty/themes/cyberdream-light.conf 
+
+# Citruszest Theme
+include ~/.config/kitty/themes/citruszest_kitty.conf
+# END_KITTY_THEME
+
+# font_family      family='GeistMonoNF-Regular' features='+ss02 +ss04 +ss06 +ss07'
+# bold_font      family='GeistMonoNF-SemiBold' features='+ss02 +ss04 +ss06 +ss07'
+# italic_font        CartographCF Nerd Font Italic 
+# bold_italic_font   CartographCF Nerd Font Bold Italic 
+
+# BEGIN_KITTY_FONTS
+# END_KITTY_FONTS
