@@ -14,7 +14,7 @@ This is my personal dotfiles repository.
 
 Clone this repository into your home directory.
 ```
-git clone https://github.com/nickmdrummers/dotfiles.git ~/dotfiles
+git clone https://github.com/NickmDrummer/dotfiles ~/dotfiles
 cd dotfiles
 ```
 Then use GNU stow to create symlinks to the files in this repository.
