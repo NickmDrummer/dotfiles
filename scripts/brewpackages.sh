@@ -10,4 +10,4 @@ echo "Installing starship prompt"
 curl -sS https://starship.rs/install.sh | sh
 
 echo "Installing Maple Mono Font"
-brew install --cask font-maple-nf
+brew install --cask font-maple-mono-nf

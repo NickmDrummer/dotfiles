@@ -9,3 +9,8 @@ sudo dnf install -y \
     fastfetch \
     zsh \
     fzf 
+
+echo "Changing shell to zsh. Write /bin/zsh"
+sudo chsh $USER
+
+echo "Log out and log back in again to use your new default shell"
