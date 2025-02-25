@@ -29,11 +29,11 @@ Inside the dotfiles directory you will find a folder called `scripts`. This fold
 
 Run in order with `sh [script name].sh`.
 
-- `packages_installer.sh`: zsh, neovim, fastfetch, fzf.
-- `brewpackages.sh`: Homebrew, Yazi and Maple Mono Font (Nerd Font).
+- `packages_installer.sh`: zsh, neovim, fastfetch, fzf, brew, starship, and fast-syntax-highlighting.
+- `brewpackages.sh`: Yazi and Maple Mono Font (Nerd Font).
 - `kittyInstall.sh`: Kitty Terminal.
 
 
-### Reference
+### Stow Reference
 
 - [youtube video](https://youtu.be/y6XCebnB9gs?si=YAik6reUHF-HyErJ)
