@@ -10,8 +10,14 @@ sudo dnf install -y \
     zsh \
     fzf 
 
-echo "Installing starship prompt"
+echo "Installing Starship prompt"
 curl -sS https://starship.rs/install.sh | sh
+
+echo "Installing Homebrew"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+echo "Installing fast-syntax-highlighting"
+git clone https://github.com/zdharma-continuum/fast-syntax-highlighting ~/path/to/fsh
 
 echo "Changing shell to zsh. Write /bin/zsh"
 sudo chsh $USER
