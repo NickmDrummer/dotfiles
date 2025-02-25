@@ -10,6 +10,9 @@ sudo dnf install -y \
     zsh \
     fzf 
 
+echo "Installing starship prompt"
+curl -sS https://starship.rs/install.sh | sh
+
 echo "Changing shell to zsh. Write /bin/zsh"
 sudo chsh $USER
 
