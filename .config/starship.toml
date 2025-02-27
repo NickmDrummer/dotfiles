@@ -6,10 +6,10 @@ $os\
 $username\
 [](bg:color_bg0 fg:color_cyan)\
 $directory\
-[](fg:color_bg0 bg:color_green)\
+[](fg:color_bg0 bg:color_blue)\
 $git_branch\
 $git_status\
-[](fg:color_green bg:color_purple)\
+[](fg:color_blue bg:color_purple)\
 $c\
 $dotnet\
 $rust\
@@ -20,15 +20,13 @@ $java\
 $kotlin\
 $haskell\
 $python\
-[](fg:color_purple bg:color_pink)\
+[](fg:color_purple bg:color_purple)\
 $docker_context\
 $conda\
-[](fg:color_pink bg:color_pink)\
-$time\
-[ ](fg:color_pink)\
+[ ](fg:color_purple)\
 $line_break$character"""
 
-palette = 'eldritch'
+palette = 'rose-pine'
 
 [palettes.eldritch]
 color_bg = '#212337'
@@ -46,6 +44,23 @@ color_magenta = '#ff5ef1'
 color_pink = '#f265b5'
 color_orange = '#f7c67f'
 color_purple = '#a48cf2'
+
+[palettes.rose-pine]
+color_bg = '#191724'
+color_bg0 = '#26233a'
+color_bgAlt = '#1e2124'
+color_bgHighlight = '#403d52'
+color_fg = '#e0def4'
+color_grey = '#524f67'
+color_blue = '#9ccfd8'
+color_green = '#31748f'
+color_cyan = '#ebbcba'
+color_red = '#eb6f92'
+color_yellow = '#f6c177'
+color_magenta = '#c4a7e7'
+color_pink = '#f265b5'
+color_orange = '#f6c177'
+color_purple = '#c4a7e7'
 
 [palettes.cyberdream]
 color_bg = '#16181a'
@@ -108,36 +123,39 @@ truncation_symbol = "…/"
 "Music" = " 󰝚 "
 "Pictures" = "  "
 "Developer" = "  "
-"/GO" = "/  "
-"/JS" = "/  "
+"Assembly" = "  "
 "/C" = "/  "
 "/Dotnet" = "/  "
+"/GO" = "/  "
+"/Haskell" = "/  "
+"/JS" = "/  "
+"/Lua" = "/  "
 "/ReactJs" = "/  "
 
 [git_branch]
 symbol = "  "
-style = "bg:color_green"
-format = '[[ $symbol $branch ](fg:color_bg bg:color_green)]($style)'
+style = "bg:color_blue"
+format = '[[ $symbol $branch ](fg:color_bg bg:color_blue)]($style)'
 
 [git_status]
-style = "bg:color_green"
-format = '[[($all_status$ahead_behind )](fg:color_bg bg:color_green)]($style)'
+style = "bg:color_blue"
+format = '[[($all_status$ahead_behind )](fg:color_bg bg:color_blue)]($style)'
 
 [nodejs]
 symbol = "\ue719"
 style = "bg:color_purple"
-format = '[[ $symbol( $version) ](fg:color_fg bg:color_purple)]($style)'
+format = '[[ $symbol( $version) ](fg:color_bg bg:color_purple)]($style)'
 
 [c]
-symbol = "  "
+symbol = " "
 style = "bg:color_purple" 
-format = '[[ $symbol( $version) ](fg:color_fg bg:color_purple)]($style)'
+format = '[[ $symbol( $version) ](fg:color_bg bg:color_purple)]($style)'
 
 
 [dotnet]
-symbol = "  "
+symbol = " "
 style = "bg:color_purple" 
-format = '[[ $symbol( $version) ](fg:color_fg bg:color_purple)]($style)'
+format = '[[ $symbol( $version) ](fg:color_bg bg:color_purple)]($style)'
 detect_extensions = ['csproj', 'fsproj', 'xproj']
 heuristic = false
 
@@ -147,9 +165,9 @@ style = "bg:color_purple"
 format = '[[ $symbol( $version) ](fg:color_fg bg:color_purple)]($style)'
 
 [golang]
-symbol = " 󰟓  "
+symbol = "󰟓 "
 style = "bg:color_purple"
-format = '[[ $symbol( $version) ](fg:color_fg bg:color_purple)]($style)'
+format = '[[ $symbol( $version) ](fg:color_bg bg:color_purple)]($style)'
 
 [php]
 symbol = " "
@@ -157,9 +175,9 @@ style = "bg:color_purple"
 format = '[[ $symbol( $version) ](fg:color_fg bg:color_purple)]($style)'
 
 [java]
-symbol = "  "
+symbol = " "
 style = "bg:color_purple"
-format = '[[ $symbol( $version) ](fg:color_fg bg:color_purple)]($style)'
+format = '[[ $symbol( $version) ](fg:color_bg bg:color_purple)]($style)'
 
 [kotlin]
 symbol = " "
@@ -167,14 +185,14 @@ style = "bg:color_purple"
 format = '[[ $symbol( $version) ](fg:color_fg bg:color_purple)]($style)'
 
 [haskell]
-symbol = "  "
+symbol = " "
 style = "bg:color_purple"
-format = '[[ $symbol( $version) ](fg:color_fg bg:color_purple)]($style)'
+format = '[[ $symbol( $version) ](fg:color_bg bg:color_purple)]($style)'
 
 [python]
 symbol = " "
 style = "bg:color_purple"
-format = '[[ $symbol( $version) ](fg:color_fg bg:color_purple)]($style)'
+format = '[[ $symbol( $version) ](fg:color_bg bg:color_purple)]($style)'
 
 [docker_context]
 symbol = " "
@@ -188,17 +206,17 @@ format = '[[ $symbol( $environment) ](fg:#83a598 bg:color_pink)]($style)'
 [time]
 disabled = false
 time_format = "%R"
-style = "bg:color_pink"
-format = '[[  $time ](fg:color_fg bg:color_pink)]($style)'
+style = "bg:color_red"
+format = '[[  $time ](fg:color_bg bg:color_yellow)]($style)'
 
 [line_break]
 disabled = false
 
 [character]
 disabled = false
-success_symbol = '[](bold fg:color_green)'
-error_symbol = '[](bold fg:color_red)'
-vimcmd_symbol = '[](bold fg:color_green)'
-vimcmd_replace_one_symbol = '[](bold fg:color_purple)'
-vimcmd_replace_symbol = '[](bold fg:color_purple)'
-vimcmd_visual_symbol = '[](bold fg:color_yellow)'
+success_symbol = '[󱞩 ](bold fg:color_blue)'
+error_symbol = '[ ](bold fg:color_red)'
+vimcmd_symbol = '[󱞥 ](bold fg:color_blue)'
+vimcmd_replace_one_symbol = '[󱞥 ](bold fg:color_purple)'
+vimcmd_replace_symbol = '[󱞥 ](bold fg:color_purple)'
+vimcmd_visual_symbol = '[󱞥 ](bold fg:color_yellow)'
