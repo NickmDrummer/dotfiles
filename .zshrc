@@ -6,6 +6,8 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:~/usr/bin/
 export PATH=$PATH:~/.cargo/bin/
 export PATH=$PATH:/usr/local/go/bin
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
 export TERM=xterm-256color
 
 source ~/path/to/fsh/fast-syntax-highlighting.plugin.zsh
@@ -52,7 +54,7 @@ alias gccw="gcc -Wall -Wextra -Wunused-variable -Wunused-parameter"
 
 ### GIT ALIASES
 alias gt="cat ~/tokenGITHUB.txt"
-alias ga="git add ."
+alias ga="git add"
 alias gc="git commit -m"
 alias gs="git status"
 alias gl="git log"
