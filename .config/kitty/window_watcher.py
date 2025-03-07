@@ -3,8 +3,8 @@ from typing import Any, Dict
 from kitty.boss import Boss
 from kitty.window import Window, DynamicColor
 
-FOCUSED_BG   = "#080808"
-UNFOCUSED_BG = "#1a2b33"
+FOCUSED_BG   = "#000000"
+UNFOCUSED_BG = "#1a1a1a"
 
 def on_focus_change(boss: Boss, window: Window, data: Dict[str, Any])-> None:
     if data["focused"]:
