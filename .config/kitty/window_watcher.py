@@ -4,7 +4,7 @@ from kitty.boss import Boss
 from kitty.window import Window, DynamicColor
 
 FOCUSED_BG   = "#000000"
-UNFOCUSED_BG = "#1a1a1a"
+UNFOCUSED_BG = "#0b0b0b"
 
 def on_focus_change(boss: Boss, window: Window, data: Dict[str, Any])-> None:
     if data["focused"]:
