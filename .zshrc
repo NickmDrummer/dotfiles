@@ -3,6 +3,7 @@ export ZSH=$HOME/.zsh
 export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=$PATH:/home/nickmdrummer/.ghcup/bin
 export PATH=$PATH:~/usr/bin/
 export PATH=$PATH:~/.cargo/bin/
 export PATH=$PATH:/usr/local/go/bin
@@ -98,7 +99,6 @@ case ":$PATH:" in
 esac
 # pnpm end
 
-[ -f "/home/nickmdrummer/.ghcup/env" ] && . "/home/nickmdrummer/.ghcup/env" # ghcup-env
 
 # Shell Wrapper for yazi: provides the ability to change the current working directory when exiting Yazi
 function y() {
@@ -109,3 +109,5 @@ function y() {
 	fi
 	rm -f -- "$tmp"
 }
+
+[ -f "/home/nickmdrummer/.ghcup/env" ] && . "/home/nickmdrummer/.ghcup/env" # ghcup-env
