@@ -3,7 +3,7 @@ export ZSH=$HOME/.zsh
 export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
-export PATH=$PATH:/home/nickmrummer/.ghcup/bin
+export PATH=$PATH:/home/nickdmrummer/.ghcup/bin
 export PATH=$PATH:~/usr/bin/
 export PATH=$PATH:~/.cargo/bin/
 export PATH=$PATH:/usr/local/go/bin
@@ -11,7 +11,6 @@ export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 export TERM=xterm-256color
 
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 ### 1 ---- Autocompletions ----------------------------------------
@@ -37,6 +36,7 @@ alias upd="sudo dnf update && sudo dnf upgrade"
 alias e="exit"
 alias d="clear"
 alias h="cd"
+alias dot="cd ~/dotfiles/"
 alias dd="cd ~/Developer/"
 alias ddg="cd ~/Developer/GO/"
 alias ddj="cd ~/Developer/JS/"
@@ -109,4 +109,13 @@ function y() {
 	rm -f -- "$tmp"
 }
 
-[ -f "/home/nickmdrummer/.ghcup/env" ] && . "/home/nickmdrummer/.ghcup/env" # ghcup-env
+# detect SO and load correct packages
+case "$(uname -s)" in
+  Linux)
+   source /home/linuxbrew/.linuxbrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+  ;;
+  Darwin)
+    source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  ;;
+esac
