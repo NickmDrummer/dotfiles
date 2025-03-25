@@ -3,7 +3,7 @@ export ZSH=$HOME/.zsh
 export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
-export PATH=$PATH:/home/nickmdrummer/.ghcup/bin
+export PATH=$PATH:/home/nickmrummer/.ghcup/bin
 export PATH=$PATH:~/usr/bin/
 export PATH=$PATH:~/.cargo/bin/
 export PATH=$PATH:/usr/local/go/bin
@@ -11,7 +11,7 @@ export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 export TERM=xterm-256color
 
-source ~/path/to/fsh/fast-syntax-highlighting.plugin.zsh
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 ### 1 ---- Autocompletions ----------------------------------------
@@ -29,8 +29,8 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#a57705,underline"
 
-alias la="exa --icons -a --group-directories-first --git-ignore -l --no-permissions --no-time -h --git"
-alias ll="exa --icons --group-directories-first --git-ignore -l --no-permissions --no-time -h --git"
+alias la="eza --icons -a --group-directories-first --git-ignore -l --no-permissions --no-time -h --git"
+alias ll="eza --icons --group-directories-first --git-ignore -l --no-permissions --no-time -h --git"
 
 ### General ALIASES
 alias upd="sudo dnf update && sudo dnf upgrade"
@@ -68,7 +68,6 @@ alias gcm="git checkout main"
 alias grn="git checkout -m master main"
 alias gb="git branch"
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 export PATH="/home/linuxbrew/.linuxbrew/opt/openjdk@17/bin:$PATH"
 
 # Created by `pipx` on 2024-04-19 20:41:58
