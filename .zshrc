@@ -116,6 +116,9 @@ case "$(uname -s)" in
    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
   ;;
   Darwin)
+    eval "$(/usr/local/bin/brew shellenv)"
     source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    [ -f "/Users/nickmdrummer/.ghcup/env" ] && . "/Users/nickmdrummer/.ghcup/env" # ghcup-env
   ;;
 esac
+
