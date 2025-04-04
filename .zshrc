@@ -3,7 +3,6 @@ export ZSH=$HOME/.zsh
 export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
-export PATH=$PATH:/home/nickdmrummer/.ghcup/bin
 export PATH=$PATH:~/usr/bin/
 export PATH=$PATH:~/.cargo/bin/
 export PATH=$PATH:/usr/local/go/bin
@@ -41,6 +40,7 @@ alias dd="cd ~/Developer/"
 alias ddg="cd ~/Developer/GO/"
 alias ddj="cd ~/Developer/JS/"
 alias ddc="cd ~/Developer/C/"
+alias ddcp="cd ~/Developer/Cpp/"
 alias ddh="cd ~/Developer/Haskell/"
 alias dp="cd ~/Documents/AUS/Primer_Año/"
 alias mars="java -jar ~/Mars4_5.jar"
@@ -53,6 +53,7 @@ alias vis="source ~/.zshrc"
 alias vik="nvim ~/.config/kitty/kitty.conf"
 
 alias gccw="gcc -Wall -Wextra -Wunused-variable -Wunused-parameter"
+alias gppw="g++ -Wall -Wextra -Wunused-variable -Wunused-parameter"
 
 ### GIT ALIASES
 alias gt="cat ~/tokenGITHUB.txt"
@@ -114,6 +115,7 @@ case "$(uname -s)" in
   Linux)
    source /home/linuxbrew/.linuxbrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+   [ -f "/home/$USER/.ghcup/env" ] && . "/home/$USER/.ghcup/env" # ghcup-env
   ;;
   Darwin)
     eval "$(/usr/local/bin/brew shellenv)"
