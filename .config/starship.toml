@@ -125,8 +125,8 @@ RedHatEnterprise = "󱄛 "
 
 [username]
 show_always = true
-style_user = "bold bg:color_bg fg:color_green"
-style_root = "bold bg:color_bg fg:color_green" 
+style_user = "bg:color_bg fg:color_green"
+style_root = "bg:color_bg fg:color_green" 
 format = '[ Nick ニック]($style)'
 
 [directory]
@@ -155,7 +155,7 @@ truncation_symbol = "…/"
 [git_branch]
 symbol = " "
 style = "bg:color_dark_green"
-format = '[[ $symbol $branch ](fg:color_bg bg:color_green)]($style)'
+format = '[[ $symbol $branch ](bold fg:color_bg bg:color_green)]($style)'
 
 [git_status]
 style = "bg:color_green"
@@ -235,7 +235,7 @@ format = '[[ $symbol( $environment) ](fg:#83a598 bg:color_pink)]($style)'
 disabled = false
 time_format = "%R"
 style = "bg:color_cyan"
-format = '[[ $time ](fg:color_bg bg:color_cyan)]($style)'
+format = '[[ $time ](bold fg:color_bg bg:color_cyan)]($style)'
 
 [line_break]
 disabled = false
