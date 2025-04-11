@@ -25,7 +25,7 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-
 ### 3 ---- Source other configs -----------------------------------
 [[ -f $ZSH/config/history.zsh ]] && source $ZSH/config/history.zsh
 
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#a57705,underline"
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ffb400,underline"
 
 alias la="eza --icons -a --group-directories-first --git-ignore -l --no-permissions --no-time -h --git"
 alias ll="eza --icons --group-directories-first --git-ignore -l --no-permissions --no-time -h --git"
