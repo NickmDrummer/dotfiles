@@ -75,6 +75,9 @@ alias gb="git branch"
 
 export PATH="/home/linuxbrew/.linuxbrew/opt/openjdk@17/bin:$PATH"
 
+fastfetch
+
+
 # Created by `pipx` on 2024-04-19 20:41:58
 export PATH="$PATH:/home/nickmdrummer/.local/bin"
 export PATH="/home/linuxbrew/.linuxbrew/opt/jpeg/bin:$PATH"
