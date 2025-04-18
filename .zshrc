@@ -52,8 +52,7 @@ alias nn="cd ~/.config/nvim/"
 alias b="cd .."
 alias bb="cd ../.."
 alias vi="nvim"
-alias viz="nvim ~/.zshrc"
-alias vis="source ~/.zshrc"
+alias viz="nvim ~/.zshrc && source ~/.zshrc"
 alias vik="nvim ~/.config/kitty/kitty.conf"
 
 alias gccw="gcc -Wall -Wextra -Wunused-variable -Wunused-parameter"
@@ -74,9 +73,6 @@ alias grn="git checkout -m master main"
 alias gb="git branch"
 
 export PATH="/home/linuxbrew/.linuxbrew/opt/openjdk@17/bin:$PATH"
-
-fastfetch
-
 
 # Created by `pipx` on 2024-04-19 20:41:58
 export PATH="$PATH:/home/nickmdrummer/.local/bin"
