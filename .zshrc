@@ -9,8 +9,12 @@ export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 export TERM=xterm-256color
+export EDITOR=nvim
+export XDG_CURRENT_DESKTOP=Hyprland
+export XDG_SESSION_DESKTOP=Hyprland
 
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
 
 ### 1 ---- Autocompletions ----------------------------------------
 autoload -Uz compinit && compinit
