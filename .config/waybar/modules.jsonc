@@ -1,0 +1,192 @@
+{
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "on-click": "activate",
+    "all-outputs": false,
+    "format-icons": {
+      "default": "󰯈 ",
+      "active": "󰚌 ",
+      "special": "󱄲 "
+    },
+    // "persistent-workspaces": {
+    //   "1": "DP-1",
+    //   "2": "DP-1",
+    //   "3": "HDMI-A-1",
+    //   "4": "HDMI-A-1"
+    // },
+    "show-special": true
+  },
+  "clock": {
+    "format": "{:%d %b %H:%M}",
+    "timezone": "America/Argentina/Buenos_Aires",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "format": {
+        "months": "<span color='#fffbfb'><b>{}</b></span>",
+        "weekdays": "<span color='#00ff00'><b>{}</b></span>",
+        "today": "<span color='#00ff00'><b><u>{}</u></b></span>"
+      }
+    }
+  },
+  "battery": {
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 20
+    },
+    "format": "{icon}   {capacity}",
+    //"format-charging": "   {capacity}",
+    //"format-plugged": "    {capacity}",
+    "format-charging": "󰋠   {capacity}",
+    "format-plugged": "󰋠    {capacity}",
+    "format-alt": "{time}   {icon}",
+    "format-icons": [
+      "󱢠 󱢠 󱢠 ",
+      "󱢠 󱢠 󰛞 ",
+      "󱢠 󱢠 󰛞 ",
+      "󱢠 󱢠 󰋑 ",
+      "󱢠 󰛞 󰋑 ",
+      "󱢠 󰛞 󰋑 ",
+      "󱢠 󰋑 󰋑 ",
+      "󰛞 󰋑 󰋑 ",
+      "󰛞 󰋑 󰋑 ",
+      "󰋑 󰋑 󰋑 "
+    ]
+    //"format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+    //"format-icons": [" ", " ", " ", " ", " "]
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-bluetooth": "{icon} 󰂰 {volume}%",
+    "format-muted": "󰖁  ",
+    "format-icons": {
+      "headphone": " ",
+      "hands-free": " ",
+      "headset": " ",
+      "phone": " ",
+      "portable": " ",
+      "car": " ",
+      "default": [
+        "",
+        " ",
+        "󰕾 ",
+        " "
+      ],
+      "ignored-sinks": [
+        "Easy Effects Sink"
+      ]
+    },
+    "scroll-step": 5.0,
+    "on-click": "$HOME/.config/hypr/scripts/volume.sh --toggle",
+    "on-click-right": "pavucontrol -t 3",
+    "on-scroll-up": "$HOME/.config/hypr/scripts/volume.sh --inc",
+    "on-scroll-down": "$HOME/.config/hypr/scripts/volume.sh --dec",
+    "tooltip-format": "{icon} {desc} | {volume}%",
+    "smooth-scrolling-threshold": 1
+  },
+  "network": {
+    "format-wifi": "    {signalStrength}%",
+    "format-ethernet": "{ipaddr}/{cidr}",
+    "format-linked": "{ifname} (No IP)",
+    "format-disconnected": "󰖪 ",
+    "on-click": "exec ~/.config/rofi/assets/wifimenu --rofi -s",
+    "tooltip-format": "Network: <big><b>{essid}</b></big>\nSignal strength: <b>{signaldBm}dBm ({bandwidthDownBytes})</b>\nFrequency: <b>{frequency}MHz</b>\nInterface: <b>{ifname}</b>"
+  },
+  "bluetooth": {
+    "format": "󰂯    {status}",
+    "format-disabled": " off",
+    "format-connected": " {num_connections}",
+    "tooltip-format": "{device_alias}",
+    "tooltip-format-connected": " {device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}",
+    "on-click": "kitty -e bluetui"
+  },
+  // Custom modules
+  "custom/power": {
+    "format": " ",
+    "on-click": "$HOME/.config/hypr/scripts/Wlogout.sh",
+    "tooltip": true,
+    "tooltip-format": "Left Click: Logout Menu"
+  },
+  "custom/weather": {
+    "format": "{}",
+    "format-alt": "{alt}: {}",
+    "format-alt-click": "click",
+    "interval": 3600,
+    "return-type": "json",
+    "exec": "$HOME/.config/hypr/scripts/Weather.py",
+    //"exec": "$HOME/.config/hypr/UserScripts/Weather.sh",
+    //"exec-if": "ping wttr.in -c1",
+    "tooltip": true
+  },
+  "custom/playerctl": {
+    "format": "<span>{}</span>",
+    "return-type": "json",
+    "max-length": 15,
+    "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}}  {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+    "on-click-middle": "playerctl play-pause",
+    "on-click": "playerctl next",
+    "on-click-right": "playerctl previous",
+    "scroll-step": 5.0,
+    "on-scroll-up": "$HOME/.config/hypr/scripts/volume.sh --inc",
+    "on-scroll-down": "$HOME/.config/hypr/scripts/volume.sh --dec",
+    "smooth-scrolling-threshold": 1
+  },
+  "custom/swaync": {
+    "tooltip": true,
+    "tooltip-format": "Left Click: Launch Notification Center\nRight Click: Do not Disturb",
+    "format": "{} {icon} ",
+    "format-icons": {
+      "notification": "<span foreground='red'><sup></sup></span>",
+      "none": "",
+      "dnd-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-none": "",
+      "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "inhibited-none": "",
+      "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-inhibited-none": ""
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "sleep 0.1 && swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
+  },
+  // Groups
+  "group/status": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 500,
+      "children-class": "custom/power",
+      "transition-left-to-right": false
+    },
+    "modules": [
+      "custom/power"
+    ]
+  },
+  "group/notify": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 500,
+      "children-class": "custom/swaync",
+      "transition-left-to-right": false
+    },
+    "modules": [
+      "custom/swaync"
+    ]
+  },
+  "group/audio": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 500,
+      "children-class": "pulseaudio",
+      "transition-right-to-left": false
+    },
+    "modules": [
+      // "battery",
+      // "bluetooth",
+      "pulseaudio"
+    ]
+  }
+}

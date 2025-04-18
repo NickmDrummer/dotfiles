@@ -1,0 +1,167 @@
+/* generar los colores con wal -i [ruta_de_imagen] por si no estan en el archivo */
+@import "../../.cache/wal/colors-waybar.css";
+
+@define-color main-color @color13;
+/* @define-color main-color #00ff00; */
+
+* {
+    border: none;
+    border-radius: 0px;
+    font-family: "Ndot55, DepartureMono Nerd Font";
+    font-weight: bold;
+    font-size: 18px;
+    min-height: 0;
+}
+
+window#waybar {
+    border-radius: 20px;
+    background: alpha(@background, 0.3);
+}
+
+tooltip {
+    background: alpha(@background, 0.3);
+    border-radius: 10px;
+    border: 2px solid alpha(lighter(@main-color), 0.3);
+}
+
+tooltip label {
+    color: @foreground;
+}
+
+#workspaces {
+    background: alpha(@background, 0.2);
+    border-radius: 20px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+#workspaces button {
+    padding: 0px;
+    color: alpha(@foreground, 0.5);
+    background: transparent;
+    border-radius: 20px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    padding-left: 7px;
+    padding-right: 2px;
+    animation: gradient_f 20s ease-in infinite;
+    transition: all 0.4s cubic-bezier(0.55, -0.68, 0.48, 1.682);
+}
+
+#workspaces button.active {
+    background: alpha(@background, 0.2);
+    color: lighter(@main-color);
+    border-radius: 20px;
+    transition: color 0.5s;
+    margin-left: 5px;
+    padding-left: 12px;
+    padding-right: 6px;
+    margin-right: 5px;
+    animation: gradient_f 20s ease-in infinite;
+    transition: all 0.8s cubic-bezier(0.55, -0.68, 0.48, 1.682);
+}
+
+#workspaces button.special {
+    background: alpha(@background, 0.2);
+    color: lighter(@main-color);
+    border-radius: 20px;
+    transition: color 0.5s;
+    margin-left: 5px;
+    padding-left: 12px;
+    padding-right: 6px;
+    margin-right: 5px;
+    animation: gradient_f 20s ease-in infinite;
+    transition: all 0.8s cubic-bezier(0.55, -0.68, 0.48, 1.682);
+}
+#workspaces button.focused {
+    color: @color5;
+    background: transparent;
+}
+
+#workspaces button.urgent {
+    color: @color5;
+    background: transparent;
+}
+
+#workspaces button:hover {
+    background: transparent;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+#window,
+#battery,
+#network,
+#memory,
+#bluetooth,
+#workspaces {
+    padding: 0px 14px 0px 14px;
+}
+
+#window {
+    margin-left: 60px;
+    margin-right: 60px;
+    background: alpha(@background, 0.3);
+    border-radius: 10px;
+    color: lighter(@main-color);
+}
+
+#clock {
+    color: lighter(@main-color);
+    background: transparent;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+#network {
+    color: lighter(@main-color);
+    background: transparent;
+}
+
+#bluetooth {
+    color: lighter(@main-color);
+    background: transparent;
+} 
+
+#battery {
+    color: lighter(@main-color);
+    background: transparent;
+}
+
+#pulseaudio {
+    color: lighter(@main-color);
+    background: transparent;
+    margin-right: 15px;
+}
+
+#custom-power {
+  color: lighter(@main-color);
+  background: transparent;
+  margin-right: 15px;
+}
+
+#custom-weather {
+  color: lighter(@main-color);
+  background: transparent;
+  margin-top: -3px;
+  margin-right: 15px;
+}
+
+#custom-playerctl {
+  color: lighter(@main-color);
+  background: transparent;
+} 
+
+#custom-swaync {
+  color: lighter(@main-color);
+  background: transparent;
+  margin-right: 15px;
+}
+
+#memory {
+    color: lighter(@main-color);
+    background: transparent;
+}
+
+#calendar {
+    font-family: "DepartureMono Nerd Font";
+}
