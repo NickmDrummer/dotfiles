@@ -1,0 +1,62 @@
+/* ---- 💫 https://github.com/JaKooLit 💫 ---- */
+/* Main config Rofi Beats Config menu */
+
+@import "~/.config/rofi/config.rasi"  
+
+/* ---- Mainbox ---- */
+mainbox {
+  children:
+    [ "inputbar", "listview"];
+}
+
+// /* ---- Entry ---- */ 
+// entry {
+//   expand: false;
+//   // width: 25%;
+//   // width: 25%;
+//   placeholder: " 📻 Choose Music Source";
+//   horizontal-align: 0.5;
+//   horizontal-align: 0.5;
+// }
+
+/* ---- Window ---- */
+window {
+  // width: 28%;
+  height: inherit;
+    transparency:                "real";
+    location:                    center;
+    anchor:                      center;
+    fullscreen:                  false;
+    width:                       700px;
+    height:                      300px;
+    x-offset:                    0px;
+    y-offset:                    0px;
+
+    /* properties for all widgets */
+    enabled:                     true;
+    border-radius:               5px;
+    cursor:                      "default";
+    background-color:            @background;
+    border:                      1px solid;
+    border-color:                rgba(255,255,255,0.1);
+
+}
+
+/* ---- Listview ---- */
+listview {
+  fixed-columns: false;
+  scrollbar: false;
+  colums: 1;
+  lines: 3;
+  spacing: 6px;
+  cycle: true;
+}
+
+/* ---- Element ---- */
+element-icon {
+  	size: 0%;
+}
+element-text {
+    horizontal-align: 0.5;
+    
+}
