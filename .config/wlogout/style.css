@@ -24,7 +24,7 @@ button {
 button:hover,
 button:focus {
     color: @foreground;
-    background-color: @color1;
+    background-color: @color13;
     background-size: 40%;
 }
 
