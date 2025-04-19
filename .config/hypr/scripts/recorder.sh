@@ -17,4 +17,5 @@ notify-send -i $ICON_PATH/recording.png -h string:wf-recorder:record -t 950 "Rec
 sleep 1
 
 dateTime=$(date +%m-%d-%Y-%H:%M:%S)
-wf-recorder --bframes max_b_frames -f $HOME/screenshot/$dateTime.mp4
+
+wf-recorder -o DP-1 --audio=alsa_output.pci-0000_0c_00.6.analog-stereo.monitor --bframes max_b_frames -f $HOME/Videos/grabaciones/$dateTime.mp4
