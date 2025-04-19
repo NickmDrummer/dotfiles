@@ -54,6 +54,7 @@ alias bb="cd ../.."
 alias vi="nvim"
 alias viz="nvim ~/.zshrc && source ~/.zshrc"
 alias vik="nvim ~/.config/kitty/kitty.conf"
+alias ff="fastfetch"
 
 alias gccw="gcc -Wall -Wextra -Wunused-variable -Wunused-parameter"
 alias gppw="g++ -Wall -Wextra -Wunused-variable -Wunused-parameter"
