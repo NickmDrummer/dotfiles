@@ -49,7 +49,7 @@ dummy {
 
 textbox-help {
     expand: false;
-    content: " [ CTRL DEL ]    DELETE                [ ALT DEL ]   WIPE ALL";
+    content: " [ CTRL 9 ]    DELETE                [ CTRL 0 ]   WIPE ALL";
 
     border-radius:                 5px;
     background-color:              @background-alt;
