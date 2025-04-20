@@ -10,6 +10,7 @@ export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 export TERM=xterm-256color
 export EDITOR=nvim
+export TERMINAL=kitty
 export XDG_CURRENT_DESKTOP=Hyprland
 export XDG_SESSION_DESKTOP=Hyprland
 
@@ -55,6 +56,7 @@ alias vi="nvim"
 alias viz="nvim ~/.zshrc && source ~/.zshrc"
 alias vik="nvim ~/.config/kitty/kitty.conf"
 alias ff="fastfetch"
+alias sdi="sudo dnf5 install"
 
 alias gccw="gcc -Wall -Wextra -Wunused-variable -Wunused-parameter"
 alias gppw="g++ -Wall -Wextra -Wunused-variable -Wunused-parameter"
