@@ -22,17 +22,40 @@ validate_images() {
 }
 
 select_random_image() {
-  local random_image="${images[RANDOM % ${#images[@]}]}"
-  if [ ! -f "$CURRENT_IMAGE" ]; then
-    echo "$random_image"
-  else
-    local selected_image
-    while :; do
-      selected_image="$random_image"
-      [ "$selected_image" -ef "$CURRENT_IMAGE" ] || break
-    done
-    echo "$selected_image"
+  # Verificar si el array de imágenes está vacío
+  if [ ${#images[@]} -eq 0 ]; then
+    echo "Error: No images available in the array." >&2
+    return 1
   fi
+
+  # Si solo hay una imagen, devolverla (no hay opción de randomizar)
+  if [ ${#images[@]} -eq 1 ]; then
+    echo "${images[0]}"
+    return 0
+  fi
+
+  # Si CURRENT_IMAGE no existe o no es un archivo, elegir una imagen aleatoria
+  if [ ! -f "$CURRENT_IMAGE" ]; then
+    echo "${images[$((RANDOM % ${#images[@]}))]}"
+    return 0
+  fi
+
+  # Crear un array temporal sin la imagen actual
+  local temp_images=()
+  for img in "${images[@]}"; do
+    if [ ! "$img" -ef "$CURRENT_IMAGE" ]; then
+      temp_images+=("$img")
+    fi
+  done
+
+  # Si no hay otras imágenes disponibles, devolver la actual
+  if [ ${#temp_images[@]} -eq 0 ]; then
+    echo "$CURRENT_IMAGE"
+    return 0
+  fi
+
+  # Seleccionar una imagen aleatoria del array temporal
+  echo "${temp_images[$((RANDOM % ${#temp_images[@]}))]}"
 }
 
 set_new_wallpaper() {
