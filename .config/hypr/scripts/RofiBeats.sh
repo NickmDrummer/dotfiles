@@ -10,15 +10,11 @@ rofi_theme_1="$HOME/.config/rofi/config-rofi-Beats-menu.rasi"
 
 # Online Stations. Edit as required
 declare -A online_music=(
-  ["FM - Easy Rock - Baguio 91.9 📻🎶"]="https://radio-stations-philippines.com/easy-rock-baguio"
-  ["FM - Love Radio 90.7 📻🎶"]="https://radio-stations-philippines.com/love"
-  ["Radio - Lofi Girl 🎧🎶"]="https://play.streamafrica.net/lofiradio"
-  ["Radio - Chillhop 🎧🎶"]="http://stream.zeno.fm/fyn8eh3h5f8uv"
-  ["Radio - Ibiza Global 🎧🎶"]="https://filtermusic.net/ibiza-global"
-  ["YT - Relaxing Piano Music 🎹🎶"]="https://youtu.be/6H7hXzjFoVU?si=nZTPREC9lnK1JJUG"
-  ["YT - lofi hip hop radio beats 📹🎶"]="https://www.youtube.com/live/jfKfPfyJRdk?si=PnJIA9ErQIAw6-qd"
-  ["YT - Relaxing Piano Jazz Music 🎹🎶"]="https://youtu.be/85UEqRat6E4?si=jXQL1Yp2VP_G6NSn"
-  ["Primeagen Bangers 💻"]="https://www.youtube.com/playlist?list=PLm323Lc7iSW9oSIDihesMJXmMNfh8U59k"
+  ["    Relaxing Piano Music"]="https://youtu.be/6H7hXzjFoVU?si=nZTPREC9lnK1JJUG"
+  ["    Relaxing Piano Jazz Music"]="https://youtu.be/85UEqRat6E4?si=jXQL1Yp2VP_G6NSn"
+  ["    Atmosferic CHILLSTEP"]="https://youtu.be/xAR6N9N8e6U?si=chN-0ZI1kLGqtlTa"
+  ["    Atmosferic CODING"]="https://youtu.be/b3TOVBNSJDA?si=mLjvvozb5CrSPnsT"
+  ["    Empty Streets"]="https://youtu.be/dIwuxv3szOM?si=6bSeL6eux944yeVW"
 )
 
 # Populate local_music array with files from music directory and subdirectories
