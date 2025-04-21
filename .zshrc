@@ -36,7 +36,7 @@ alias la="eza --icons -a --group-directories-first --git-ignore -l --no-permissi
 alias ll="eza --icons --group-directories-first --git-ignore -l --no-permissions --no-time -h --git"
 
 ### General ALIASES
-alias upd="sudo dnf update && sudo dnf upgrade"
+alias upd="sudo dnf5 update && sudo dnf5 upgrade"
 alias e="exit"
 alias d="clear"
 alias h="cd"
@@ -57,6 +57,7 @@ alias viz="nvim ~/.zshrc && source ~/.zshrc"
 alias vik="nvim ~/.config/kitty/kitty.conf"
 alias ff="fastfetch"
 alias sdi="sudo dnf5 install"
+alias sdr="sudo dnf5 remove"
 
 alias gccw="gcc -Wall -Wextra -Wunused-variable -Wunused-parameter"
 alias gppw="g++ -Wall -Wextra -Wunused-variable -Wunused-parameter"
