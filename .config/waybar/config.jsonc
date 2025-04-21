@@ -12,13 +12,13 @@
   "modules-left": [
     "clock#time",
     "clock#date",
-    "custom/weather",
     "custom/playerctl"
   ],
   "modules-center": [
     "hyprland/workspaces"
   ],
   "modules-right": [
+    "custom/weather",
     "group/audio",
     "group/notify",
     "group/status"
