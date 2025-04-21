@@ -1,7 +1,7 @@
 /* generar los colores con wal -i [ruta_de_imagen] por si no estan en el archivo */
 @import "../../.cache/wal/colors-waybar.css";
 
-@define-color main-color @color12;
+@define-color main-color @color13;
 
 * {
     border: none;
@@ -108,7 +108,6 @@ tooltip label {
     color: lighter(@main-color);
     background: transparent;
     margin-left: 15px;
-    margin-right: 15px;
 }
 
 #network {
@@ -142,13 +141,18 @@ tooltip label {
   color: lighter(@main-color);
   background: transparent;
   margin-top: -3px;
+  margin-left: 15px;
   margin-right: 15px;
 }
 
 #custom-playerctl {
-  color: lighter(@main-color);
+  color: lighter(@color7);
   background: transparent;
 } 
+
+#custom-playerctl.Playing {
+  color: lighter(@main-color)
+}
 
 #custom-swaync {
   color: lighter(@main-color);
