@@ -6,6 +6,7 @@ CURRENT_IMAGE="$HOME/wallpaper/wallpaper.png"
 APP_NAME="Wallpaper selector"
 SET_WALLPAPER_SCRIPT="$HOME/.config/hypr/scripts/set_wallpaper.sh"
 APPLY_WAL_THEME_SCRIPT="$HOME/.config/hypr/scripts/apply_wal_theme.sh"
+APPLY_NEW_BORDERS_SCRIPT="$HOME/.config/hypr/scripts/RainbowBorders.sh"
 
 validate_image_directory() {
   if [ ! -d "$IMAGE_DIR" ]; then
@@ -102,4 +103,23 @@ apply_wal_theme() {
     exit 1
   fi
 }
+
+apply_new_borders() {
+  if [ -f "$APPLY_NEW_BORDERS_SCRIPT" ] && [ -x "$APPLY_NEW_BORDERS_SCRIPT" ]; then
+    echo "Ejecutando $APPLY_NEW_BORDERS_SCRIPT"
+    if "$APPLY_NEW_BORDERS_SCRIPT"; then
+      echo "apply_new_borders.sh ejecutado con éxito"
+    else
+      notify-send -a "$APP_NAME" "Error" "Failed to execute $APPLY_NEW_BORDERS_SCRIPT"
+      echo "Error al ejecutar $APPLY_NEW_BORDERS_SCRIPT"
+      exit 1
+    fi
+  else
+    notify-send -a "$APP_NAME" "Error" "Cannot execute $APPLY_NEW_BORDERS_SCRIPT"
+    echo "No se puede ejecutar $APPLY_NEW_BORDERS_SCRIPT"
+    exit 1
+  fi
+}
+
 apply_wal_theme
+apply_new_borders
