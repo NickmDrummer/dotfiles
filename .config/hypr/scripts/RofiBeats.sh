@@ -10,11 +10,10 @@ rofi_theme_1="$HOME/.config/rofi/config-rofi-Beats-menu.rasi"
 
 # Online Stations. Edit as required
 declare -A online_music=(
-  ["    Relaxing Piano Music"]="https://youtu.be/6H7hXzjFoVU?si=nZTPREC9lnK1JJUG"
-  ["    Relaxing Piano Jazz Music"]="https://youtu.be/85UEqRat6E4?si=jXQL1Yp2VP_G6NSn"
   ["    Atmosferic CHILLSTEP"]="https://youtu.be/xAR6N9N8e6U?si=chN-0ZI1kLGqtlTa"
   ["    Atmosferic CODING"]="https://youtu.be/b3TOVBNSJDA?si=mLjvvozb5CrSPnsT"
   ["    Empty Streets"]="https://youtu.be/dIwuxv3szOM?si=6bSeL6eux944yeVW"
+  ["    FutureScape"]="https://youtu.be/rzgR40IceRM?si=Qto4Ht5mARnO3GdE"
 )
 
 # Populate local_music array with files from music directory and subdirectories
