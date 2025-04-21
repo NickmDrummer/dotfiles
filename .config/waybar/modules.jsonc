@@ -61,7 +61,7 @@
     //"format-icons": [" ", " ", " ", " ", " "]
   },
   "pulseaudio": {
-    "format": "{icon} {volume}%",
+    "format": "{icon}{volume}%",
     "format-bluetooth": "{icon} 󰂰 {volume}%",
     "format-muted": " ",
     "format-icons": {
@@ -128,8 +128,8 @@
   "custom/playerctl": {
     "format": "<span>{icon} {text}</span>",
     "format-icons": {
-      "Playing": "▶",
-      "Paused": "⏸"
+      "Playing": " ",
+      "Paused": " "
     },
     "return-type": "json",
     "max-length": 40,
@@ -153,7 +153,7 @@
   "custom/swaync": {
     "tooltip": true,
     "tooltip-format": "Left Click: Launch Notification Center\nRight Click: Do not Disturb",
-    "format": "{} {icon}",
+    "format": "{icon}",
     "format-icons": {
       "notification": "<span foreground='red'><sup></sup></span>",
       "none": "",
