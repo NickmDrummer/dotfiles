@@ -16,8 +16,13 @@
     // },
     "show-special": true
   },
-  "clock": {
-    "format": "{:%d %b %H:%M}",
+  "clock#date": {
+    "format": "{:%d %b}",
+    "timezone": "America/Argentina/Buenos_Aires",
+    "tooltip": false
+  },
+  "clock#time": {
+    "format": "<span color='#ffffff'>{:%H:%M}</span>",
     "timezone": "America/Argentina/Buenos_Aires",
     "tooltip-format": "<tt><small>{calendar}</small></tt>",
     "calendar": {
@@ -78,8 +83,8 @@
       ]
     },
     "scroll-step": 5.0,
-    "on-click": "$HOME/.config/hypr/scripts/volume.sh --toggle",
-    "on-click-right": "pavucontrol -t 3",
+    "on-click": "pavucontrol -t 3",
+    "on-click-right": "",
     "on-scroll-up": "$HOME/.config/hypr/scripts/volume.sh --inc",
     "on-scroll-down": "$HOME/.config/hypr/scripts/volume.sh --dec",
     "tooltip-format": "{icon} {desc} | {volume}%",
@@ -121,17 +126,29 @@
     "tooltip": true
   },
   "custom/playerctl": {
-    "format": "<span>{}</span>",
+    "format": "<span>{icon} {text}</span>",
+    "format-icons": {
+      "Playing": "▶",
+      "Paused": "⏸"
+    },
     "return-type": "json",
-    "max-length": 15,
-    "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}}  {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
-    "on-click-middle": "playerctl play-pause",
-    "on-click": "playerctl next",
-    "on-click-right": "playerctl previous",
+    "max-length": 30,
+    "exec": "~/.config/waybar/script/playerctl-status.sh",
+    "exec-if": "playerctl --player=mpv status 2>/dev/null",
+    "interval": 1,
+    "on-click-middle": "playerctl --player=mpv play-pause",
+    "on-click": "playerctl --player=mpv next",
+    "on-click-right": "playerctl --player=mpv previous",
     "scroll-step": 5.0,
     "on-scroll-up": "$HOME/.config/hypr/scripts/volume.sh --inc",
     "on-scroll-down": "$HOME/.config/hypr/scripts/volume.sh --dec",
-    "smooth-scrolling-threshold": 1
+    "smooth-scrolling-threshold": 1,
+    "tooltip": true,
+    "escape": true,
+    "ignored-players": [
+      "firefox",
+      "chromium"
+    ]
   },
   "custom/swaync": {
     "tooltip": true,
