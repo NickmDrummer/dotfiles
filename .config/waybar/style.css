@@ -107,7 +107,16 @@ tooltip label {
 #clock {
     color: lighter(@main-color);
     background: transparent;
+}
+
+#clock.date {
     margin-left: 15px;
+}
+
+#clock.time {
+  font-size: 20px;
+  font-family: "Ndot55";
+  margin-left: 15px;
 }
 
 #network {
@@ -128,7 +137,7 @@ tooltip label {
 #pulseaudio {
     color: lighter(@main-color);
     background: transparent;
-    margin-right: 15px;
+    margin-right: 20px;
 }
 
 #custom-power {
@@ -148,7 +157,7 @@ tooltip label {
 #custom-playerctl {
   color: lighter(@color7);
   background: transparent;
-  margin-left: 15px;
+  margin-left: 20px;
 } 
 
 #custom-playerctl.Playing {
