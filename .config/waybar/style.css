@@ -170,6 +170,17 @@ tooltip label {
   margin-right: 15px;
 }
 
+#custom-recorder.recording {
+  background: alpha(#000000, 0.5);
+  border-radius: 16px;
+  color: #ff0000;
+  font-family: "Font Awesome 5 Free", sans-serif;
+  font-size: 14px;
+  padding: 0px 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
 #memory {
     color: lighter(@main-color);
     background: transparent;

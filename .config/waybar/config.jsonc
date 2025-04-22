@@ -18,6 +18,7 @@
     "hyprland/workspaces"
   ],
   "modules-right": [
+    "custom/recorder",
     "custom/weather",
     "group/audio",
     "group/notify",

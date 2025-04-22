@@ -170,6 +170,15 @@
     "on-click-right": "swaync-client -d -sw",
     "escape": true
   },
+  "custom/recorder": {
+    "format": "{}",
+    "return-type": "json",
+    "interval": 1,
+    "exec": "~/.config/waybar/script/recording-status.sh",
+    "exec-if": "pgrep wf-recorder",
+    "on-click": "$HOME/.config/hypr/scripts/recorder.sh",
+    "tooltip": false
+  },
   // Groups
   "group/status": {
     "orientation": "inherit",
