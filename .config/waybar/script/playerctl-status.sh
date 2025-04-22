@@ -23,7 +23,7 @@ short_duration=$(echo "$duration" | sed 's/^0*://; s/^0*//')
 
 # Construye el texto (artista + título + duración)
 if [ -n "$short_artist" ]; then
-  text=$(echo "$short_artist-$short_title [$short_position⏽$short_duration]" | sed 's/"/\\"/g')
+  text=$(echo "$short_artist - $short_title $position" | sed 's/"/\\"/g')
 else
   text=$(echo "$short_title [$short_position⏽$short_duration]" | sed 's/"/\\"/g')
 fi
