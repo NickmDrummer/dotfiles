@@ -8,7 +8,7 @@
     border-radius: 0px;
     font-family: "DepartureMono Nerd Font"; /*Ndot55 */
     font-weight: bold;
-    font-size: 15px;
+    font-size: 16px;
     min-height: 0;
 }
 
@@ -29,6 +29,7 @@ tooltip label {
 
 #workspaces {
     background: alpha(@background, 0.2);
+    padding: 0px 14px 0px 14px;
     border-radius: 20px;
     margin-top: 4px;
     margin-bottom: 4px;
@@ -87,14 +88,10 @@ tooltip label {
     color: rgba(255, 255, 255, 0.5);
 }
 
-#window,
 #battery,
 #network,
 #memory,
 #bluetooth,
-#workspaces {
-    padding: 0px 14px 0px 14px;
-}
 
 #window {
     margin-left: 60px;
@@ -114,9 +111,9 @@ tooltip label {
 }
 
 #clock.time {
-  font-size: 20px;
+  font-size: 22px;
   font-family: "Ndot55";
-  margin-left: 15px;
+  margin: 4px 0px 0px 15px;
 }
 
 #network {
