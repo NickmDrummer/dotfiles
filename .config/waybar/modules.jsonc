@@ -30,7 +30,8 @@
   },
   "clock#time": {
     "format": "<span color='#ffffff'>{:%H:%M}</span>",
-    "timezone": "America/Argentina/Buenos_Aires"
+    "timezone": "America/Argentina/Buenos_Aires",
+    "tooltip": false
   },
   "battery": {
     "states": {
