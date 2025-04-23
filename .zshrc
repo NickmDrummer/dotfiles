@@ -64,6 +64,7 @@ alias gppw="g++ -Wall -Wextra -Wunused-variable -Wunused-parameter"
 
 ### GIT ALIASES
 alias gt="cat ~/tokenGITHUB.txt"
+alias gtg="cat $HOME/gitTags.txt"
 alias ga="git add"
 alias gc="git commit -m"
 alias gs="git status"
