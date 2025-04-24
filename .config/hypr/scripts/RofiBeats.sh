@@ -19,6 +19,7 @@ declare -A online_music=(
   ["    Breakcore: Sounds of Destruction"]="https://youtu.be/gKh5eyGE9fs?si=gQDKGhKix-ER7Unn"
   ["    Mind Numbing Breakcore I"]="https://youtu.be/gozHU8eR840?si=SyDRnhihrPHu9uaF"
   ["    Mind Numbing Breakcore II"]="https://youtu.be/UmqHtqttJO4?si=-5fODKnMfgzkgsqj"
+  ["    Emotional Breakcore"]="https://youtu.be/i5EnxQOh2Kk?si=vEiViUKXMX-NW2xt"
 )
 
 # Populate local_music array with files from music directory and subdirectories
