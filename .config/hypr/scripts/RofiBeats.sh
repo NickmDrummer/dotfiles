@@ -17,7 +17,8 @@ declare -A online_music=(
   ["    Dreamscape Liquid DnB"]="https://youtu.be/h7--DyFfZPU?si=19Jo4Z52PAirt05F"
   ["    Pretty Breakcore"]="https://youtu.be/b_lks0QAkOg?si=M2TqCtE4FcwqJNDr"
   ["    Breakcore: Sounds of Destruction"]="https://youtu.be/gKh5eyGE9fs?si=gQDKGhKix-ER7Unn"
-  ["    Mind Numbing Breakcore"]="https://youtu.be/gozHU8eR840?si=SyDRnhihrPHu9uaF"
+  ["    Mind Numbing Breakcore I"]="https://youtu.be/gozHU8eR840?si=SyDRnhihrPHu9uaF"
+  ["    Mind Numbing Breakcore II"]="https://youtu.be/UmqHtqttJO4?si=-5fODKnMfgzkgsqj"
 )
 
 # Populate local_music array with files from music directory and subdirectories
