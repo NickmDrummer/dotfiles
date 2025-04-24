@@ -5,8 +5,8 @@
 
 /* ---- Window ---- */
 window {
-  width: 1000px;
-  height: 450px;
+  width: 700px;
+  height: 300px;
 }
 
 /* ---- Mainbox ---- */
@@ -17,13 +17,13 @@ mainbox {
 
 /* ---- Entry ---- */ 
 entry {
-  placeholder: "📻 Choose Media or Stations to play";
+  placeholder: "Type to search";
 }
 
 /* ---- Listview ---- */
 listview {
-  columns: 2;
-  lines: 7;
+  columns: 1;
+  lines: 6;
   fixed-height: false;
   margin: 10px;
   scrollbar: true;
