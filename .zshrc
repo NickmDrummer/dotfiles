@@ -58,6 +58,7 @@ alias vik="nvim ~/.config/kitty/kitty.conf"
 alias ff="fastfetch"
 alias sdi="sudo dnf5 install"
 alias sdr="sudo dnf5 remove"
+alias lfs="cat $HOME/lf_shortcuts.txt"
 
 alias gccw="gcc -Wall -Wextra -Wunused-variable -Wunused-parameter"
 alias gppw="g++ -Wall -Wextra -Wunused-variable -Wunused-parameter"
