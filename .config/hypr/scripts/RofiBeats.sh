@@ -15,11 +15,12 @@ declare -A online_music=(
   ["    Empty Streets"]="https://youtu.be/dIwuxv3szOM?si=6bSeL6eux944yeVW"
   ["    FutureScape"]="https://youtu.be/rzgR40IceRM?si=Qto4Ht5mARnO3GdE"
   ["    Dreamscape Liquid DnB"]="https://youtu.be/h7--DyFfZPU?si=19Jo4Z52PAirt05F"
-  ["    Pretty Breakcore"]="https://youtu.be/b_lks0QAkOg?si=M2TqCtE4FcwqJNDr"
-  ["    Breakcore: Sounds of Destruction"]="https://youtu.be/gKh5eyGE9fs?si=gQDKGhKix-ER7Unn"
-  ["    Mind Numbing Breakcore I"]="https://youtu.be/gozHU8eR840?si=SyDRnhihrPHu9uaF"
-  ["    Mind Numbing Breakcore II"]="https://youtu.be/UmqHtqttJO4?si=-5fODKnMfgzkgsqj"
-  ["    Emotional Breakcore"]="https://youtu.be/i5EnxQOh2Kk?si=vEiViUKXMX-NW2xt"
+  ["    BC: Pretty Breakcore"]="https://youtu.be/b_lks0QAkOg?si=M2TqCtE4FcwqJNDr"
+  ["    BC: Sounds of Destruction"]="https://youtu.be/gKh5eyGE9fs?si=gQDKGhKix-ER7Unn"
+  ["    BC: Mind Numbing I"]="https://youtu.be/gozHU8eR840?si=SyDRnhihrPHu9uaF"
+  ["    BC: Mind Numbing II"]="https://youtu.be/UmqHtqttJO4?si=-5fODKnMfgzkgsqj"
+  ["    BC: Emotional Breakcore"]="https://youtu.be/i5EnxQOh2Kk?si=vEiViUKXMX-NW2xt"
+  ["    BC: Unstable Emotions"]="https://youtu.be/jysypCeADJI?si=yW249wZy3ENSOH9S"
 )
 
 # Populate local_music array with files from music directory and subdirectories
