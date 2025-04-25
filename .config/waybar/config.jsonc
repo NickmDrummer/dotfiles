@@ -12,6 +12,7 @@
   "modules-left": [
     "clock#time",
     "clock#date",
+    "custom/weather",
     "custom/playerctl"
   ],
   "modules-center": [
@@ -19,7 +20,7 @@
   ],
   "modules-right": [
     "custom/recorder",
-    "custom/weather",
+    "group/mobo_drawer",
     "group/audio",
     "group/notify",
     "group/status"

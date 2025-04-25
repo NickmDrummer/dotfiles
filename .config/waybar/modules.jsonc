@@ -106,6 +106,58 @@
     "tooltip-format-enumerate-connected": "{device_alias}",
     "on-click": "kitty -e bluetui"
   },
+  "temperature": {
+    "interval": 10,
+    "tooltip": true,
+    "hwmon-path": [
+      "/sys/class/hwmon/hwmon1/temp1_input",
+      "/sys/class/thermal/thermal_zone0/temp"
+    ],
+    //"thermal-zone": 0,
+    "critical-threshold": 82,
+    "format-critical": "{temperatureC}°C {icon}",
+    "format": "{temperatureC}°C {icon}",
+    "format-icons": [
+      ""
+    ],
+    "on-click-right": "$HOME/.config/hypr/scripts/WaybarScripts.sh --nvtop"
+  },
+  "cpu": {
+    "format": "{usage}% 󰻠 ",
+    "interval": 1,
+    "min-length": 5,
+    "format-alt-click": "click",
+    "format-alt": "{icon0}{icon1}{icon2}{icon3} {usage:>2}% 󰍛",
+    "format-icons": [
+      "▁",
+      "▂",
+      "▃",
+      "▄",
+      "▅",
+      "▆",
+      "▇",
+      "█"
+    ],
+    "on-click-right": "gnome-system-monitor"
+  },
+  "memory": {
+    "interval": 10,
+    "format": "{used:0.1f}G ",
+    "format-alt": "{percentage}% 󰾆",
+    "format-alt-click": "click",
+    "tooltip": true,
+    "tooltip-format": "{used:0.1f}GB/{total:0.1f}G",
+    "on-click-right": "$HOME/.config/hypr/scripts/WaybarScripts.sh --btop"
+  },
+  "disk": {
+    "interval": 30,
+    //"format": "󰋊",
+    "path": "/",
+    //"format-alt-click": "click",
+    "format": "{percentage_used}%  ",
+    //"tooltip": true,
+    "tooltip-format": "{used} used out of {total} on {path} ({percentage_used}%)"
+  },
   // Custom modules
   "custom/power": {
     "format": " ",
@@ -179,7 +231,34 @@
     "on-click": "$HOME/.config/hypr/scripts/recorder.sh",
     "tooltip": false
   },
+  "custom/separator#line": {
+    "format": "|",
+    "interval": "once",
+    "tooltip": false
+  },
+  "custom/separator#dot": {
+    "format": "",
+    "interval": "once",
+    "tooltip": false
+  },
   // Groups
+  "group/mobo_drawer": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 500,
+      "children-class": "cpu",
+      "transition-left-to-right": false
+    },
+    "modules": [
+      "temperature",
+      "cpu",
+      "custom/separator#dot",
+      "memory",
+      "custom/separator#dot",
+      "disk",
+      "custom/separator#line"
+    ]
+  },
   "group/status": {
     "orientation": "inherit",
     "drawer": {

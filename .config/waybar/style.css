@@ -178,9 +178,51 @@ tooltip label {
   margin-bottom: 5px;
 }
 
+#custom-separator.line {
+  color: @foreground;
+  background: transparent;
+  font-family: "Font Awesome 5 Free", sans-serif;
+  margin-right: 10px;
+  margin-bottom: 5px;
+  /* padding: 0px 10px; */
+  /* margin-top: 5px; */
+  /* margin-bottom: 5px; */
+}
+
+#custom-separator.dot {
+  color: lighter(@color12);
+  background: transparent;
+  font-family: "Font Awesome 5 Free", sans-serif;
+  margin-left: 0px;
+  padding: 0px 5px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+}
+
+#temperature {
+  color: lighter(@main-color);
+  background: transparent;
+  margin-right: 20px;
+}
+
+#cpu {
+  color: lighter(@main-color);
+  background: transparent;
+  margin-right: -8px;
+}
+
 #memory {
     color: lighter(@main-color);
     background: transparent;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#disk {
+  color: lighter(@main-color);
+  background: transparent;
+  margin-left: 5px;
+  margin-right: 7px;
 }
 
 #calendar {
