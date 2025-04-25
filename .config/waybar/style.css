@@ -154,7 +154,7 @@ tooltip label {
 #custom-playerctl {
   color: lighter(@color7);
   background: transparent;
-  margin-left: 20px;
+  margin-left: 5px;
 } 
 
 #custom-playerctl.Playing {
