@@ -11,6 +11,7 @@ export PATH=$PATH:$GOPATH/bin
 export TERM=xterm-256color
 export EDITOR=nvim
 export TERMINAL=kitty
+export DEFAULT_PLAYER=mpv
 export XDG_CURRENT_DESKTOP=Hyprland
 export XDG_SESSION_DESKTOP=Hyprland
 
@@ -58,14 +59,14 @@ alias vik="nvim ~/.config/kitty/kitty.conf"
 alias ff="fastfetch"
 alias sdi="sudo dnf5 install"
 alias sdr="sudo dnf5 remove"
-alias lfs="cat $HOME/lf_shortcuts.txt"
+alias lfs="bat $HOME/lf_shortcuts.txt"
 
 alias gccw="gcc -Wall -Wextra -Wunused-variable -Wunused-parameter"
 alias gppw="g++ -Wall -Wextra -Wunused-variable -Wunused-parameter"
 
 ### GIT ALIASES
-alias gt="cat ~/tokenGITHUB.txt"
-alias gtg="cat $HOME/gitTags.txt"
+alias gt="bat ~/tokenGITHUB.txt"
+alias gtg="bat $HOME/gitTags.txt"
 alias ga="git add"
 alias gc="git commit -m"
 alias gs="git status"
