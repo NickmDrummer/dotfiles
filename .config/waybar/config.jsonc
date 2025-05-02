@@ -20,6 +20,7 @@
   ],
   "modules-right": [
     "custom/recorder",
+    "custom/keyboard",
     "group/mobo_drawer",
     "group/audio",
     "group/notify",

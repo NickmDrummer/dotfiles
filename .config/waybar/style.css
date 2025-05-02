@@ -108,6 +108,7 @@ tooltip label {
 
 #clock.date {
     margin-left: 15px;
+    margin-right: 15px;
 }
 
 #clock.time {
@@ -199,6 +200,14 @@ tooltip label {
   padding: 0px 5px;
   margin-right: 0px;
   margin-bottom: 0px;
+}
+
+#custom-keyboard {
+  color: lighter(@main-color);
+  background-color: transparent;
+  padding: 2px 8px;
+  border-radius: 5px;
+  margin-right: 15px;
 }
 
 #temperature {

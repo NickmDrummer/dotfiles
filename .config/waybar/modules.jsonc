@@ -241,6 +241,15 @@
     "interval": "once",
     "tooltip": false
   },
+  "custom/keyboard": {
+    "exec": "$HOME/.config/waybar/script/current_kb_layout.sh",
+    "format": "{text}",
+    "interval": 1,
+    "on-click": "$HOME/.config/hypr/scripts/keyboardSwitch.sh",
+    "tooltip": true,
+    "tooltip-format": "Change Keyboard Layout",
+    "return-type": "json"
+  },
   // Groups
   "group/mobo_drawer": {
     "orientation": "inherit",
