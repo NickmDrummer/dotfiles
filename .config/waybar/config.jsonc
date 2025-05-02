@@ -12,7 +12,7 @@
   "modules-left": [
     "clock#time",
     "clock#date",
-    "custom/weather",
+    // "custom/weather",
     "custom/playerctl"
   ],
   "modules-center": [
