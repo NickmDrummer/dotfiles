@@ -1,0 +1,47 @@
+@import "~/.config/rofi/config.rasi"  
+
+* {
+    font:                        "NDot57 Bold 11";
+    background:                  transparent;
+    background-alt:              rgba(0,0,0,0.2);
+    foreground:                  white;
+    selected:                    @selected-urgent-background;
+}
+
+/* ---- Window ---- */
+window {
+	width: 600px;
+  height: 200px;
+}
+
+
+mainbox {
+    orientation:                 horizontal;
+    children:                    [ "inputbar" ];
+    background-color:            transparent;
+    spacing:                     0px;
+    padding:                     10px;
+}
+
+inputbar {
+    children:                    [ "dummy", "entry", "dummy" ];
+    padding:                     20px;
+    width: 550px;
+    height: inherit;
+    border-radius: 0px;
+    orientation:                 vertical;
+    background-image: url("~/wallpaper/wallpaper.png", width);
+}
+
+dummy {
+  background-color: transparent;
+}
+
+entry {
+    cursor:                      inherit;
+    placeholder:                 "   TYPE TO SEARCH";
+    placeholder-color:           #FFFFFF95;
+    border-radius:               10px;
+    background-color:            @background-alt;
+    padding:                     10px 180px;
+}
