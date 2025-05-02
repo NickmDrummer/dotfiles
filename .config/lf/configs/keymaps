@@ -47,7 +47,7 @@ map cs "calculate size of directory"
 
 # ARCHIVES
 map az "create zipfile"
-map ae "extract archive"
+map zz "extract archive"
 
 # CONVERT FILES
 map v4 "convert to mp4"
@@ -63,6 +63,7 @@ map gd cd ~/Downloads
 map gh cd ~
 map gt cd ~/.trash
 map gw cd ~/wallpaper
+map ga cd ~/Documents/AUS/Segundo_year/primerC/
 
 map gn1 cd /mnt/ntfs    # path to my windows-type hard drive
 map gn2 cd /mnt/ntfs2   # path to my windows-type hard drive
