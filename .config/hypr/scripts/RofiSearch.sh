@@ -3,7 +3,7 @@
 # For Searching via web browsers
 
 # Define the path to the config file
-config_file=$HOME/.config/hypr/UserConfigs/01-UserDefaults.conf
+config_file=$HOME/.config/hypr/configs/default_apps.conf
 
 # Check if the config file exists
 if [[ ! -f "$config_file" ]]; then
@@ -24,8 +24,7 @@ if [[ -z "$Search_Engine" ]]; then
 fi
 
 # Rofi theme and message
-rofi_theme="$HOME/.config/rofi/config-search.rasi"
-msg='‼️ **note** ‼️ search via default web browser'
+rofi_theme="$HOME/.config/rofi/google-search.rasi"
 
 # Kill Rofi if already running before execution
 if pgrep -x "rofi" >/dev/null; then
@@ -33,4 +32,4 @@ if pgrep -x "rofi" >/dev/null; then
 fi
 
 # Open Rofi and pass the selected query to xdg-open for Google search
-echo "" | rofi -dmenu -config "$rofi_theme" -mesg "$msg" | xargs -I{} xdg-open $Search_Engine
+echo "" | rofi -dmenu -config "$rofi_theme" | xargs -I{} xdg-open $Search_Engine
