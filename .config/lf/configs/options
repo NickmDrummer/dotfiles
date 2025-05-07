@@ -4,10 +4,11 @@
 set ratios 1:2:3
 set icons true
 
-set previewer ctpv
-&ctpv -s $id
+# set previewer ctpv
+# &ctpv -s $id
 
-#set previewer ~/.config/lf/previewer/previewer.sh
+set preview
+set previewer ~/.config/lf/previewer/previewer.sh
 set cleaner ~/.config/lf/previewer/clear_img.sh
 
 set sortby 'natural'
