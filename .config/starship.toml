@@ -50,7 +50,7 @@ up_to_date = "[ ](fg:green)"
 min_time = 20_000
 
 [directory.substitutions]
-"~" = ""
+# "~" = ""
 "Documents" = " "
 "Downloads" = " "
 "Music" = " "
