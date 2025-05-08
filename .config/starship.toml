@@ -1,8 +1,10 @@
 add_newline = true
 format = """
 $directory\
-$character"""
-right_format = """$git_branch $git_status $git_state $cmd_duration"""
+$git_branch$git_status$git_state$cmd_duration\ 
+$character\
+"""
+right_format = """$cmd_duration"""
 
 palette = 'cyberdream'
 
@@ -50,7 +52,7 @@ up_to_date = "[ ](fg:green)"
 min_time = 20_000
 
 [directory.substitutions]
-# "~" = ""
+# "~" = ""
 "Documents" = " "
 "Downloads" = " "
 "Music" = " "
