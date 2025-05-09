@@ -16,7 +16,8 @@ cursor-text= #000000
 keybind = f5=reload_config
 keybind = f4=open_config
 keybind = ctrl+shift+q=quit
-
+keybind = shift+up=scroll_page_lines:-5
+keybind = shift+down=scroll_page_lines:5
 # tabs
 keybind = ctrl+shift+w=close_surface
 keybind = ctrl+shift+n=new_tab
