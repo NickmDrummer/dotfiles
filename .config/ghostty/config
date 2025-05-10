@@ -43,6 +43,7 @@ keybind= global:ctrl+shift+k=toggle_quick_terminal
 
 # MISC
 link-url = true
+confirm-close-surface = false
 mouse-hide-while-typing = true
 shell-integration = zsh
 shell-integration-features = sudo, no-cursor, no-title
