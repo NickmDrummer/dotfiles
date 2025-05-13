@@ -18,4 +18,4 @@ sleep 1
 
 dateTime=$(date +%m-%d-%Y-%H:%M:%S)
 
-wf-recorder -o DP-1 --audio=alsa_output.pci-0000_0c_00.6.analog-stereo.monitor --bframes max_b_frames -f $HOME/Videos/grabaciones/$dateTime.mp4
+wf-recorder -o DP-1 --audio=alsa_output.pci-0000_0c_00.6.analog-stereo.monitor -c libx264 -C aac -f $HOME/Videos/grabaciones/$dateTime.mp4
