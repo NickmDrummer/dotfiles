@@ -158,6 +158,11 @@
     //"tooltip": true,
     "tooltip-format": "{used} used out of {total} on {path} ({percentage_used}%)"
   },
+  "tray": {
+    "icon-size": 25,
+    "spacing": 10,
+    "show-passive-items": true
+  },
   // Custom modules
   "custom/power": {
     "format": " ",

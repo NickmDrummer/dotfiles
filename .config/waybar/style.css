@@ -239,3 +239,9 @@ tooltip label {
 #calendar {
     font-family: "DepartureMono Nerd Font";
 }
+
+#tray {
+  color: lighter(@main-color);
+  background: transparent;
+  margin-right: 15px;
+}
