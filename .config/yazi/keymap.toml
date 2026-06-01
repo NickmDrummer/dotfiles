@@ -4,13 +4,13 @@
 # CUSTOM KEYMAP
 
 # CHMOD plugin
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = [ "c", "m" ]
 run  = "plugin chmod"
 desc = "Chmod on selected files"
 
 # MOUNT plugin
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on  = "M"
 run = "plugin mount"
 
@@ -28,7 +28,7 @@ prepend_previewers = [
 ]
 
 # OUCH compression
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = ["C"]
 run = "plugin ouch"
 desc = "Compress with ouch"
@@ -41,7 +41,7 @@ extract = [
 
 
 # DEFAULT KEYMAP
-[manager]
+[mgr]
 
 keymap = [
 	{ on = "<Esc>", run = "escape",             desc = "Exit visual mode, clear selection, or cancel search" },
