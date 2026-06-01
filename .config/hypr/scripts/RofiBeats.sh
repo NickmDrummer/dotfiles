@@ -21,6 +21,7 @@ declare -A online_music=(
   ["    BC: Mind Numbing II"]="https://youtu.be/UmqHtqttJO4?si=-5fODKnMfgzkgsqj"
   ["    BC: Emotional Breakcore"]="https://youtu.be/i5EnxQOh2Kk?si=vEiViUKXMX-NW2xt"
   ["    BC: Unstable Emotions"]="https://youtu.be/jysypCeADJI?si=yW249wZy3ENSOH9S"
+  ["    Arc Raiders OST"]="https://youtu.be/CVgs61MIP2o?si=yV5gTjKj1RCkSmfG"
 )
 
 # Populate local_music array with files from music directory and subdirectories
