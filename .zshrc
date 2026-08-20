@@ -60,6 +60,7 @@ alias vig="nvim ~/dotfiles/.config/ghostty/config"
 alias ff="fastfetch"
 alias sdi="sudo dnf install"
 alias sdr="sudo dnf remove"
+alias lf="lfcd" # using lfcd instead of lf to print the last directory
 alias lfs="bat $HOME/lf_shortcuts.txt"
 
 alias gccw="gcc -Wall -Wextra -Wunused-variable -Wunused-parameter"
@@ -119,6 +120,12 @@ function y() {
 		builtin cd -- "$cwd"
 	fi
 	rm -f -- "$tmp"
+}
+
+# lfcd() is a wrapper for lf to print the last directory
+lfcd () {
+    # `command` is needed in case `lfcd` is aliased to `lf`
+    cd "$(command lf -print-last-dir "$@")"
 }
 
 # detect SO and load correct packages
