@@ -1,10 +1,13 @@
 # FONTS
 font-family = "TX-02"
 font-size = 18
+font-feature = +calt +liga +dlig
 
 # theme = HaX0R_GR33N
 theme = cyberdream
 background-opacity = 0.5
+window-height = 40
+window-width = 90
 window-padding-x = 10
 window-padding-y = 10
 split-divider-color = #5eff6c
