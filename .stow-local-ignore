@@ -2,3 +2,7 @@
 .gitignore
 scripts
 README.md
+^/\.config/hypr
+^/\.config/swaync
+^/\.config/wlogout
+^/\.config/gammastep
