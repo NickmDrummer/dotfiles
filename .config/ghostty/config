@@ -1,7 +1,7 @@
 command = /usr/bin/zsh
 # FONTS
 font-family = "TX-02"
-font-size = 18
+font-size = 15
 font-feature = +calt +liga +dlig
 
 # theme = HaX0R_GR33N
