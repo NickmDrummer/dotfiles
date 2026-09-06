@@ -19,6 +19,15 @@ video/*)
   # https://raw.githubusercontent.com/duganchen/kitty-pistol-previewer/main/vidthumb
   draw "$(vidthumb "$file")"
   ;;
+application/pdf)
+  cache_dir="${XDG_CACHE_HOME:-$HOME/.cache}/lf"
+  mkdir -p "$cache_dir"
+  cache_img="$cache_dir/pdf_preview.jpg"
+  pdftoppm -jpeg -f 1 -l 1 -singlefile "$file" "${cache_img%.jpg}" >/dev/null 2>&1
+  if [ -f "$cache_img" ]; then
+    draw "$cache_img"
+  fi
+  ;;
 esac
 
 pistol "$file"
