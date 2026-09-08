@@ -47,6 +47,8 @@ keybind= global:ctrl+shift+k=toggle_quick_terminal
 
 # MISC
 link-url = true
+clipboard-read = allow
+clipboard-write = allow
 confirm-close-surface = false
 mouse-hide-while-typing = true
 shell-integration = zsh
