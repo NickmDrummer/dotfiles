@@ -1,0 +1,28 @@
+HERDR SHORTCUTS (Prefix: Ctrl + Space)
+
+PANES
+prefix + h / alt + enter    split horizontal
+prefix + v / alt+shift+ent  split vertical
+prefix + x / alt + esc      close pane
+prefix + z                  zoom pane
+alt + h/j/k/l               focus pane
+ctrl+alt+shift+arrows       resize pane
+
+TABS
+prefix + c                 new tab
+prefix + k                 close tab
+prefix + r                 rename tab
+prefix + 1..9              switch tab
+prefix + n/p               next/prev tab
+prefix + shift+left/right  move tab
+
+WORKSPACES
+prefix + shift+c           new workspace
+prefix + shift+k           close workspace
+prefix + shift+n/p         next/prev workspace
+
+GENERAL
+prefix + q                 reload config
+prefix + ?                 help
+prefix + d                 detach
+prefix + [                 copy mode
