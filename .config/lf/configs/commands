@@ -60,7 +60,7 @@ cmd "select all elements" %{{
 
 #require rsync
 
-cmd paste &{{
+cmd paste-with-progress &{{
     set -- $(cat ~/.local/share/lf/files)
     mode="$1"
     shift
@@ -108,13 +108,9 @@ cmd paste &{{
                 exit 0	
                 ;;
         move)
-            for file in "$@"; do
-                if ! [[ -O "$file" ]]; then	
-                    lf -remote "send $id echo '   permission denied! one or more of the selected files are not owned by you and so can not be moved'"  
-                    exit 1
-                fi
-            done
-
+            # Moving is governed by permissions on the source and destination
+            # directories, not by ownership of each individual file. Let rsync
+            # report an actual read/write/execute permission failure.
             rsync -arhz --info=progress2 --remove-source-files -- "$@" . |
             stdbuf -i0 -o0 -e0 tr '\r' '\n' |
             while IFS= read -r line; do

@@ -13,7 +13,7 @@ map <esc> clear
 
 map f filter
 map i invert
-map v select
+map v toggle
 map rr :rename; cmd-delete-home     # delete name before extension
 map rb :rename; cmd-end             # cursor behind extension
 map x cut
