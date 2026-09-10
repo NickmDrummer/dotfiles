@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
-exec kitten icat --clear --stdin no --transfer-mode memory </dev/null >/dev/tty
+# Delete all Kitty Graphics Protocol images from the terminal.
+printf '\033_Ga=d,d=A\033\\' >/dev/tty

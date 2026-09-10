@@ -1,6 +1,9 @@
 #!/bin/sh
 draw() {
+  # Clear stale Kitty Graphics Protocol placements before drawing.
+  printf '\033_Ga=d,d=A\033\\' >/dev/tty
   kitten icat --stdin no --transfer-mode memory --place "${w}x${h}@${x}x${y}" "$1" </dev/null >/dev/tty
+  # Non-zero disables lf's preview cache so cleaner runs on every change.
   exit 1
 }
 
@@ -31,3 +34,5 @@ application/pdf)
 esac
 
 pistol "$file"
+# Disable lf preview caching for text/code/PDF fallbacks too.
+exit 1
