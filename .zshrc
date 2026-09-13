@@ -63,6 +63,7 @@ alias sdr="sudo dnf remove"
 alias lf="lfcd" # using lfcd instead of lf to print the last directory
 alias lfs="bat $HOME/lf_shortcuts.txt"
 alias hs='bat --style=plain ~/dotfiles/herdr_shortcuts.txt'
+alias hh="herdr"
 alias runssh="~/startssh.sh"
 
 alias gccw="gcc -Wall -Wextra -Wunused-variable -Wunused-parameter"
