@@ -1,4 +1,7 @@
 command = /usr/bin/zsh
+# Cursor styling + SSH session terminfo
+# (all shell integration options must be passed together)
+shell-integration-features = no-cursor,ssh-env
 # FONTS
 font-family = "TX-02"
 font-size = 15
@@ -58,3 +61,5 @@ shell-integration-features = sudo, no-cursor, no-title
 # custom-shader= "shaders/starfield.glsl"
 # custom-shader= "shaders/in-game-crt.glsl"
 custom-shader-animation = true
+# Fix general slowness on hyprland (https://github.com/ghostty-org/ghostty/discussions/3224)
+async-backend = epoll
