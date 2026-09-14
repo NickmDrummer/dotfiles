@@ -17,9 +17,14 @@ prefix + n/p               next/prev tab
 prefix + shift+left/right  move tab
 
 WORKSPACES
+ctrl + shift + 1..9        switch directly to workspace 1..9
+ctrl + shift + tab         previous workspace
 prefix + shift+c           new workspace
 prefix + shift+k           close workspace
 prefix + shift+n/p         next/prev workspace
+
+GHOSTTY
+ctrl + shift + tab         released in Ghostty for Herdr
 
 GENERAL
 prefix + q                 reload config
