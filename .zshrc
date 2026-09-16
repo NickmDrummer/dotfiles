@@ -40,7 +40,7 @@ alias ll="eza --icons --group-directories-first --git-ignore -l --no-permissions
 ### General ALIASES
 alias upd="sudo dnf update && sudo dnf upgrade"
 alias e="exit"
-alias d="clear"
+alias c="clear"
 alias h="cd"
 alias dot="cd ~/dotfiles/"
 alias dd="cd ~/Developer/"
