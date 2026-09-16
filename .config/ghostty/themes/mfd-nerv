@@ -1,0 +1,24 @@
+# mfd-nerv theme for ghostty
+# Based on the NERV terminal palette from mfd.nvim
+palette = 0=#1A0A02
+palette = 1=#EE8822
+palette = 2=#EE8822
+palette = 3=#EE8822
+palette = 4=#EE8822
+palette = 5=#EE8822
+palette = 6=#EE8822
+palette = 7=#EE8822
+palette = 8=#6B3510
+palette = 9=#FFAA44
+palette = 10=#FFAA44
+palette = 11=#EE8822
+palette = 12=#EE8822
+palette = 13=#EE8822
+palette = 14=#EE8822
+palette = 15=#FFAA44
+
+background = #1A0A02
+foreground = #EE8822
+cursor-color = #ff5e00
+selection-background = #2A1208
+selection-foreground = #FFAA44

@@ -8,8 +8,8 @@ font-size = 15
 font-feature = +calt +liga +dlig
 
 # theme = HaX0R_GR33N
-theme = cyberdream
-background-opacity = 0.5
+theme = mfd-nerv
+background-opacity = 1.0
 window-height = 40
 window-width = 90
 window-padding-x = 10
