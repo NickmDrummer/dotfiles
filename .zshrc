@@ -14,6 +14,7 @@ export TERMINAL=ghostty
 export DEFAULT_PLAYER=mpv
 export XDG_CURRENT_DESKTOP=Hyprland
 export XDG_SESSION_DESKTOP=Hyprland
+export OPENER='gio open'
 
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
