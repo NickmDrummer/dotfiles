@@ -1,0 +1,26 @@
+# mfd-paper theme for Ghostty
+# Based on kungfusheep/mfd.nvim's mfd-paper palette
+# Tuned ANSI colors for readable contrast on the light paper background
+
+palette = 0=#4A5B3A
+palette = 1=#6B2F2A
+palette = 2=#315C3B
+palette = 3=#6B5620
+palette = 4=#294F63
+palette = 5=#5B3B5F
+palette = 6=#245B5B
+palette = 7=#536253
+palette = 8=#6F7C6E
+palette = 9=#7E352F
+palette = 10=#3E754A
+palette = 11=#7D6528
+palette = 12=#3B6C86
+palette = 13=#76507A
+palette = 14=#357878
+palette = 15=#002611
+
+background = #BBC5B7
+foreground = #002611
+cursor-color = #001008
+selection-background = #A0B0A0
+selection-foreground = #002611
