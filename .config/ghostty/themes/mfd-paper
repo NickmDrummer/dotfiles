@@ -1,26 +1,24 @@
-# mfd-paper theme for Ghostty
-# Based on kungfusheep/mfd.nvim's mfd-paper palette
-# Tuned ANSI colors for readable contrast on the light paper background
-
-palette = 0=#4A5B3A
-palette = 1=#6B2F2A
-palette = 2=#315C3B
-palette = 3=#6B5620
-palette = 4=#294F63
-palette = 5=#5B3B5F
-palette = 6=#245B5B
-palette = 7=#536253
-palette = 8=#6F7C6E
-palette = 9=#7E352F
-palette = 10=#3E754A
-palette = 11=#7D6528
-palette = 12=#3B6C86
-palette = 13=#76507A
-palette = 14=#357878
-palette = 15=#002611
+# Custom mfd-paper adaptation for Ghostty 
+# This is my custom mfd-paper theme. It preserves almost all of the original colors, with a few subtle adjustments and a striking orange accent. Combined with the BetterCRT shader, the result is absolutely stunning!
+palette = 0=#ff4e40
+palette = 1=#002611
+palette = 2=#002611
+palette = 3=#8A9A78
+palette = 4=#002611
+palette = 5=#002611
+palette = 6=#003c08
+palette = 7=#002611
+palette = 8=#ff4e40
+palette = 9=#001008
+palette = 10=#002611
+palette = 11=#8A9A78
+palette = 12=#002611
+palette = 13=#002611
+palette = 14=#003c08
+palette = 15=#001008
 
 background = #BBC5B7
 foreground = #002611
-cursor-color = #001008
-selection-background = #A0B0A0
+cursor-color = #ff4e40
+selection-background = #ff4e40
 selection-foreground = #002611

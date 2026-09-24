@@ -8,7 +8,7 @@ font-size = 15
 font-feature = +calt +liga +dlig
 
 # theme = HaX0R_GR33N
-theme = mfd-nerv
+theme = mfd-paper
 background-opacity = 1.0
 window-height = 40
 window-width = 90
@@ -59,7 +59,7 @@ mouse-hide-while-typing = true
 shell-integration = zsh
 shell-integration-features = sudo, no-cursor, no-title
 # custom-shader= "shaders/in-game-crt.glsl"
-# custom-shader= "shaders/bettercrt.glsl"
+custom-shader= "shaders/bettercrt.glsl"
 # custom-shader= "shaders/starfield.glsl"
 # custom-shader= "shaders/in-game-crt.glsl"
 custom-shader-animation = true
