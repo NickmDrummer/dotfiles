@@ -6,24 +6,25 @@ $character\
 """
 right_format = """$cmd_duration"""
 
-palette = 'cyberdream'
+palette = 'terminal'
 
-[palettes.cyberdream]
-color_bg = '#080808'
-color_bg0 = '#161616'
-color_bgAlt = '#1e2124'
-color_bgHighlight = '#3c4048'
-color_fg = '#ffffff'
-color_grey = '#7b8496'
-color_blue = '#357FFB'
-color_green = '#5eff6c'
-color_cyan = '#04d1f9'
-color_red = '#FF3300'
-color_yellow = '#f1ff5e'
-color_magenta = '#ff5ef1'
-color_pink = '#ff5ea0'
-color_orange = '#FFB400'
-color_purple = '#bd5eff'
+[palettes.terminal]
+# ANSI names are resolved by the terminal, so Starship follows Ghostty's theme.
+color_bg = 'black'
+color_bg0 = 'bright-black'
+color_bgAlt = 'bright-black'
+color_bgHighlight = 'bright-black'
+color_fg = 'black'
+color_grey = 'bright-black'
+color_blue = 'blue'
+color_green = 'green'
+color_cyan = 'cyan'
+color_red = 'red'
+color_yellow = 'yellow'
+color_magenta = 'magenta'
+color_pink = 'bright-magenta'
+color_orange = 'yellow'
+color_purple = 'magenta'
 
 [directory]
 truncation_length = 2
