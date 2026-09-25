@@ -1,22 +1,25 @@
 # Custom mfd-paper adaptation for Ghostty 
 # This is my custom mfd-paper theme. It preserves almost all of the original colors, with a few subtle adjustments and a striking orange accent. Combined with the BetterCRT shader, the result is absolutely stunning!
 palette = 0=#ff4e40
-palette = 1=#002611
+palette = 1=#003008
 palette = 2=#002611
-palette = 3=#8A9A78
+palette = 3=#003C08
 palette = 4=#002611
-palette = 5=#002611
-palette = 6=#003c08
+palette = 5=#003008
+palette = 6=#003C08
 palette = 7=#002611
-palette = 8=#ff4e40
-palette = 9=#001008
+palette =  8=#ff4e40
+palette =  9=#003008
 palette = 10=#002611
-palette = 11=#8A9A78
+palette = 11=#003C08
 palette = 12=#002611
-palette = 13=#002611
-palette = 14=#003c08
-palette = 15=#001008
+palette = 13=#003008
+palette = 14=#003C08
+palette = 15=#002611
 
+# Original background color: #BBC5B7
+# Blue filter intensity: 
+# 10%= #BDC6AB - 15% = #BEC6A5 - 20% = #BFC79F
 background = #BBC5B7
 foreground = #002611
 cursor-color = #ff4e40
