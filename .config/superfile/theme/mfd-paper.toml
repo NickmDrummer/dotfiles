@@ -1,0 +1,76 @@
+##############################################
+#                                            #
+#               Mfd - Paper                  #
+#                                            #
+##############################################
+
+# This theme was created by: https://github.com/fzahner ! Thank you <3
+
+# This contains the theme config file for superfile! For more details see:
+# https://superfile.dev/configure/custom-theme/
+
+###############################################################################
+#                           Code Syntax Highlighting                          #
+###############################################################################
+
+# Find one you like at: https://github.com/alecthomas/chroma/blob/master/styles.
+
+code_syntax_highlight = "gruvbox-light"
+
+###############################################################################
+#                                 Base Colors                                 #
+###############################################################################
+
+#-- Full Screen
+full_screen_fg = "#002611"
+full_screen_bg = "#bbc5b7"
+
+#-- Gradient
+# Note: This currently only supports two colors.
+gradient_color = ["#002611", "#ff4e40"]
+
+#-- File Panel
+file_panel_fg = "#002611"
+file_panel_bg = "#bbc5b7"
+file_panel_border = "#002611"
+file_panel_border_active = "#ff4e40"
+file_panel_top_directory_icon = "#003c08"
+file_panel_top_path = "#003008"
+file_panel_item_selected_fg = "#ff4e40"
+file_panel_item_selected_bg = "#232a2e"
+
+#-- Footer
+footer_fg = "#002611"
+footer_bg = "#bbc5b7"
+footer_border = "#002611"
+footer_border_active = "#ff4e40"
+
+#-- Sidebar
+sidebar_fg = "#002611"
+sidebar_bg = "#bbc5b7"
+sidebar_title = "#003c08"
+sidebar_border = "#003008"
+sidebar_border_active = "#ff4e40"
+sidebar_item_selected_fg = "#002611"
+sidebar_item_selected_bg = "#ff4e40"
+sidebar_divider = "#001008"
+
+#-- Modals
+modal_fg = "#002611"
+modal_bg = "#bbc5b7"
+modal_border_active = "#003c08"
+modal_cancel_fg = "#ff4e40"
+modal_cancel_bg = "#001008"
+modal_confirm_fg = "#002611"
+modal_confirm_bg = "#ff4e40"
+
+#-- Help Menu
+help_menu_hotkey = "#003c08"
+help_menu_title = "#ff4e40"
+
+#-- Special
+cursor = "#ff4e40"
+correct = "#004c00"
+error = "#fb1e10"
+hint = "#1b67b3"
+cancel = "#859289"
