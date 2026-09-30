@@ -66,6 +66,7 @@ alias lfs="bat $HOME/lf_shortcuts.txt"
 alias hs='bat --style=plain ~/dotfiles/herdr_shortcuts.txt'
 alias hh="herdr"
 alias runssh="~/startssh.sh"
+alias sf="spf"
 
 alias gccw="gcc -Wall -Wextra -Wunused-variable -Wunused-parameter"
 alias gppw="g++ -Wall -Wextra -Wunused-variable -Wunused-parameter"
