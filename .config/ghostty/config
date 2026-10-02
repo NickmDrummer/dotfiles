@@ -8,13 +8,13 @@ font-size = 15
 font-feature = +calt +liga +dlig
 
 # theme = HaX0R_GR33N
-theme = mfd-paper
+theme = mfd-amber
 background-opacity = 1.0
 window-height = 40
 window-width = 90
 window-padding-x = 10
 window-padding-y = 10
-split-divider-color = #5eff6c
+split-divider-color = #ff4e40
 window-inherit-font-size = true
 cursor-style = block
 cursor-text= #000000
