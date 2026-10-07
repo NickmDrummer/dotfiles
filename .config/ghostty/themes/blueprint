@@ -1,0 +1,24 @@
+# blueprint theme for ghostty
+# Based on bjarneo/various-themes -> blueprint night
+palette = 0=#001837
+palette = 1=#749dd9
+palette = 2=#9ccef8
+palette = 3=#bcd8f5
+palette = 4=#9cbdf6
+palette = 5=#97a9df
+palette = 6=#cde9fd
+palette = 7=#c0cad4
+palette = 8=#4b5d73
+palette = 9=#e3efff
+palette = 10=#e3f2ff
+palette = 11=#f5faff
+palette = 12=#e4eefe
+palette = 13=#e7edff
+palette = 14=#ffffff
+palette = 15=#ffffff
+
+background = #002f6e
+foreground = #e3effa
+cursor-color = #ffffff
+selection-background = #204170
+selection-foreground = #e3effa
