@@ -3,11 +3,11 @@ command = /usr/bin/zsh
 # (all shell integration options must be passed together)
 shell-integration-features = no-cursor,ssh-env
 # FONTS
-font-family = "IoskeleyMonoTerm Nerd Font Mono"
+font-family = "Ioskeley Mono Term"
 font-size = 14
 font-feature = zero, calt, dlig, frac
 
-theme = mfd-amber
+theme = mfd-paper
 background-opacity = 1.0
 window-height = 40
 window-width = 90
