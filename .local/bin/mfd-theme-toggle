@@ -1,0 +1,172 @@
+#!/usr/bin/env bash
+#
+# Toggle the terminal + editor theme between mfd-paper (light, default)
+# and mfd-amber (dark).
+#
+# Applies to Ghostty (config file + SIGUSR2 reload, which is the only
+# signal Ghostty reloads on) and to running Neovim instances (RPC
+# remote-send, best effort). The selected theme is stored in a state file
+# so new Neovim instances and this script stay in sync.
+#
+# Usage: mfd-theme-toggle [--amber | --paper | --toggle | --status | --help]
+
+set -euo pipefail
+
+LIGHT_THEME="mfd-paper"
+DARK_THEME="mfd-amber"
+DEFAULT_THEME="$LIGHT_THEME"
+
+STATE_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/mfd-theme"
+STATE_FILE="$STATE_DIR/current"
+GHOSTTY_CONFIG="$HOME/.config/ghostty/config"
+
+usage() {
+  cat <<EOF
+Usage: $(basename "$0") [OPTION]
+
+Switch Ghostty and Neovim between the mfd light and dark themes.
+
+Options:
+  --amber    Apply the dark theme (${DARK_THEME})
+  --paper    Apply the light theme (${LIGHT_THEME})
+  --toggle   Switch to the other theme (default when no option is given)
+  --status   Print the current theme without changing anything
+  --help     Show this message
+EOF
+}
+
+read_state() {
+  local current=""
+  if [[ -f "$STATE_FILE" ]]; then
+    current="$(tr -d '[:space:]' <"$STATE_FILE")"
+  fi
+  if [[ "$current" != "$LIGHT_THEME" && "$current" != "$DARK_THEME" ]]; then
+    if [[ -z "$current" ]]; then
+      current="$(read_ghostty_theme)"
+    fi
+  fi
+  if [[ "$current" != "$LIGHT_THEME" && "$current" != "$DARK_THEME" ]]; then
+    current="$DEFAULT_THEME"
+  fi
+  printf '%s' "$current"
+}
+
+read_ghostty_theme() {
+  local theme=""
+  if [[ -f "$GHOSTTY_CONFIG" ]]; then
+    theme="$(grep -E '^theme = ' "$GHOSTTY_CONFIG" | tail -n 1 | awk '{ print $3 }')"
+  fi
+  printf '%s' "$theme"
+}
+
+write_state() {
+  local theme="$1"
+  mkdir -p "$STATE_DIR"
+  printf '%s\n' "$theme" >"$STATE_FILE"
+}
+
+set_ghostty_theme() {
+  local theme="$1"
+  if grep -qE '^theme = ' "$GHOSTTY_CONFIG"; then
+    sed -i --follow-symlinks -E "s/^theme = .*/theme = ${theme}/" "$GHOSTTY_CONFIG"
+  else
+    printf 'theme = %s\n' "$theme" >>"$GHOSTTY_CONFIG"
+  fi
+}
+
+reload_ghostty() {
+  # SIGUSR2 is the only signal Ghostty reloads on; anything else may kill it.
+  if pgrep -x ghostty >/dev/null 2>&1; then
+    pkill -SIGUSR2 -x ghostty || true
+  fi
+}
+
+collect_nvim_servers() {
+  if [[ -n "${NVIM_LISTEN_ADDRESS:-}" ]]; then
+    printf '%s\n' "$NVIM_LISTEN_ADDRESS"
+  fi
+  local runtime_dir="${XDG_RUNTIME_DIR:-/run/user/$(id -u)}"
+  local socket
+  for socket in "$runtime_dir"/nvim.*.0; do
+    if [[ -S "$socket" ]]; then
+      printf '%s\n' "$socket"
+    fi
+  done
+}
+
+sync_neovim() {
+  local theme="$1"
+  if ! command -v nvim >/dev/null 2>&1; then
+    return 0
+  fi
+  local server
+  while IFS= read -r server; do
+    if [[ -z "$server" ]]; then
+      continue
+    fi
+    timeout 2 nvim --server "$server" --remote-send "<C-\\><C-N>:colorscheme ${theme}<CR>" >/dev/null 2>&1 || true
+  done < <(collect_nvim_servers | sort -u)
+}
+
+notify_user() {
+  local theme="$1"
+  local label="dark"
+  if [[ "$theme" == "$LIGHT_THEME" ]]; then
+    label="light"
+  fi
+  local message="Theme: ${theme} (${label})"
+  # The opencode TUI bakes its colors at startup, so it needs one manual
+  # keypress after the terminal changes: ctrl+x d (theme_switch_mode).
+  local hint="opencode: ctrl+x d"
+  if command -v omarchy-notification-send >/dev/null 2>&1; then
+    omarchy-notification-send "$message" "$hint" || true
+  elif command -v notify-send >/dev/null 2>&1; then
+    notify-send "$message" "$hint" || true
+  fi
+}
+
+apply_theme() {
+  local theme="$1"
+  set_ghostty_theme "$theme"
+  reload_ghostty
+  write_state "$theme"
+  sync_neovim "$theme"
+  notify_user "$theme"
+  printf '%s\n' "$theme"
+}
+
+main() {
+  local mode="--toggle"
+  if [[ $# -gt 0 ]]; then
+    mode="$1"
+  fi
+  case "$mode" in
+  --amber)
+    apply_theme "$DARK_THEME"
+    ;;
+  --paper)
+    apply_theme "$LIGHT_THEME"
+    ;;
+  --toggle)
+    if [[ "$(read_state)" == "$LIGHT_THEME" ]]; then
+      apply_theme "$DARK_THEME"
+    else
+      apply_theme "$LIGHT_THEME"
+    fi
+    ;;
+  --status)
+    read_state
+    printf '\n'
+    ;;
+  --help | -h)
+    usage
+    ;;
+  *)
+    printf 'Unknown option: %s\n' "$mode" >&2
+    usage >&2
+    return 1
+    ;;
+  esac
+}
+
+main "$@"
