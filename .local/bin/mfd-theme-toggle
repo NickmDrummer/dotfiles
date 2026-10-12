@@ -8,6 +8,13 @@
 # remote-send, best effort). The selected theme is stored in a state file
 # so new Neovim instances and this script stay in sync.
 #
+# Bound to SUPER + SHIFT + T in Hypr (bindings.lua).
+#
+# opencode stays in sync manually (it bakes colors at startup):
+#   1. /themes -> select mfd (once per session, tui.json stays on system)
+#   2. SUPER + SHIFT + T to switch Ghostty paper/amber
+#   3. ctrl+x d (theme_switch_mode) to switch opencode dark/light to match
+#
 # Usage: mfd-theme-toggle [--amber | --paper | --toggle | --status | --help]
 
 set -euo pipefail
