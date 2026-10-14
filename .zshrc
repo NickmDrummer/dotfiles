@@ -62,6 +62,7 @@ alias vig="nvim ~/dotfiles/.config/ghostty/config"
 alias ff="fastfetch"
 alias mfd="mfd-theme-toggle --amber"
 alias mfdl="mfd-theme-toggle --paper"
+alias mfdo="mfd-theme-toggle --omarchy"
 alias sdi="sudo dnf install"
 alias sdr="sudo dnf remove"
 alias lf="lfcd" # using lfcd instead of lf to print the last directory

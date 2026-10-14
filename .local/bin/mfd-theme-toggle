@@ -1,45 +1,77 @@
 #!/usr/bin/env bash
 #
-# Toggle the terminal + editor theme between mfd-paper (light, default)
-# and mfd-amber (dark).
+# Switch Ghostty + Neovim between three modes:
+#   mfd-paper (light, default), mfd-amber (dark) and omarchy (system theme).
+#
+# - mfd-paper / mfd-amber are the custom mfd themes (Ghostty `theme = ...`).
+# - omarchy follows the Omarchy system theme via its generated
+#   ~/.local/state/omarchy/current/theme/ghostty.conf (included with
+#   `config-file`), so Ghostty always matches `omarchy theme set`.
+#   Opacity comes from Omarchy in that mode (glass block included when the
+#   glassy toggle is on). Neovim uses the generated aether colorscheme.
 #
 # Applies to Ghostty (config file + SIGUSR2 reload, which is the only
 # signal Ghostty reloads on) and to running Neovim instances (RPC
-# remote-send, best effort). The selected theme is stored in a state file
+# remote-send, best effort). The selected mode is stored in a state file
+# (plus last-mfd, so omarchy mode can return to the previous mfd theme)
 # so new Neovim instances and this script stay in sync.
 #
-# Bound to SUPER + SHIFT + T in Hypr (bindings.lua).
+# Bound to SUPER + SHIFT + T (mfd paper/amber toggle) and
+# SUPER + ALT + T (omarchy mode toggle) in Hypr (bindings.lua).
 #
 # opencode stays in sync manually (it bakes colors at startup):
 #   1. /themes -> select mfd (once per session, tui.json stays on system)
 #   2. SUPER + SHIFT + T to switch Ghostty paper/amber
 #   3. ctrl+x d (theme_switch_mode) to switch opencode dark/light to match
+#   In omarchy mode opencode on `system` already follows the terminal.
 #
-# Usage: mfd-theme-toggle [--amber | --paper | --toggle | --status | --help]
+# Usage: mfd-theme-toggle [--amber | --paper | --toggle | --omarchy | --mfd | --status | --help]
 
 set -euo pipefail
 
 LIGHT_THEME="mfd-paper"
 DARK_THEME="mfd-amber"
+OMARCHY_MODE="omarchy"
+NVIM_OMARCHY_SCHEME="aether"
 DEFAULT_THEME="$LIGHT_THEME"
 
 STATE_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/mfd-theme"
 STATE_FILE="$STATE_DIR/current"
+LAST_MFD_FILE="$STATE_DIR/last-mfd"
 GHOSTTY_CONFIG="$HOME/.config/ghostty/config"
+OMARCHY_THEME_NAME_FILE="$HOME/.local/state/omarchy/current/theme.name"
+
+OMARCHY_MARKER="# mfd-theme-toggle: omarchy mode follows the Omarchy system theme"
+OMARCHY_INCLUDE='config-file = ?"~/.local/state/omarchy/current/theme/ghostty.conf"'
+OMARCHY_TAG="# mfd-theme-toggle: suspended in omarchy mode"
 
 usage() {
   cat <<EOF
 Usage: $(basename "$0") [OPTION]
 
-Switch Ghostty and Neovim between the mfd light and dark themes.
+Switch Ghostty and Neovim between the mfd themes and the Omarchy system theme.
 
 Options:
   --amber    Apply the dark theme (${DARK_THEME})
   --paper    Apply the light theme (${LIGHT_THEME})
-  --toggle   Switch to the other theme (default when no option is given)
-  --status   Print the current theme without changing anything
+  --toggle   Switch between ${LIGHT_THEME} and ${DARK_THEME} (default when no option is given)
+  --omarchy  Toggle: enter omarchy mode, or return to the previous mfd theme
+  --mfd      Return to the previous mfd theme (leaves omarchy mode)
+  --status   Print the current mode without changing anything
   --help     Show this message
 EOF
+}
+
+detect_ghostty_mode() {
+  local mode=""
+  if [[ -f "$GHOSTTY_CONFIG" ]]; then
+    if grep -qF "current/theme/ghostty.conf" "$GHOSTTY_CONFIG"; then
+      mode="$OMARCHY_MODE"
+    else
+      mode="$(grep -E '^theme = ' "$GHOSTTY_CONFIG" | tail -n 1 | awk '{ print $3 }')"
+    fi
+  fi
+  printf '%s' "$mode"
 }
 
 read_state() {
@@ -47,23 +79,24 @@ read_state() {
   if [[ -f "$STATE_FILE" ]]; then
     current="$(tr -d '[:space:]' <"$STATE_FILE")"
   fi
-  if [[ "$current" != "$LIGHT_THEME" && "$current" != "$DARK_THEME" ]]; then
-    if [[ -z "$current" ]]; then
-      current="$(read_ghostty_theme)"
-    fi
+  if [[ "$current" != "$LIGHT_THEME" && "$current" != "$DARK_THEME" && "$current" != "$OMARCHY_MODE" ]]; then
+    current="$(detect_ghostty_mode)"
   fi
-  if [[ "$current" != "$LIGHT_THEME" && "$current" != "$DARK_THEME" ]]; then
+  if [[ "$current" != "$LIGHT_THEME" && "$current" != "$DARK_THEME" && "$current" != "$OMARCHY_MODE" ]]; then
     current="$DEFAULT_THEME"
   fi
   printf '%s' "$current"
 }
 
-read_ghostty_theme() {
-  local theme=""
-  if [[ -f "$GHOSTTY_CONFIG" ]]; then
-    theme="$(grep -E '^theme = ' "$GHOSTTY_CONFIG" | tail -n 1 | awk '{ print $3 }')"
+read_last_mfd() {
+  local last=""
+  if [[ -f "$LAST_MFD_FILE" ]]; then
+    last="$(tr -d '[:space:]' <"$LAST_MFD_FILE")"
   fi
-  printf '%s' "$theme"
+  if [[ "$last" != "$LIGHT_THEME" && "$last" != "$DARK_THEME" ]]; then
+    last="$DEFAULT_THEME"
+  fi
+  printf '%s' "$last"
 }
 
 write_state() {
@@ -72,12 +105,42 @@ write_state() {
   printf '%s\n' "$theme" >"$STATE_FILE"
 }
 
-set_ghostty_theme() {
-  local theme="$1"
-  if grep -qE '^theme = ' "$GHOSTTY_CONFIG"; then
-    sed -i --follow-symlinks -E "s/^theme = .*/theme = ${theme}/" "$GHOSTTY_CONFIG"
+set_ghostty_value() {
+  local key="$1"
+  local value="$2"
+  if grep -qE "^${key} = " "$GHOSTTY_CONFIG"; then
+    sed -i --follow-symlinks -E "s/^${key} = .*/${key} = ${value}/" "$GHOSTTY_CONFIG"
   else
-    printf 'theme = %s\n' "$theme" >>"$GHOSTTY_CONFIG"
+    printf '%s = %s\n' "$key" "$value" >>"$GHOSTTY_CONFIG"
+  fi
+}
+
+set_ghostty_mfd() {
+  local theme="$1"
+  # Drop the omarchy include block (marker line + include line).
+  if grep -qF "$OMARCHY_MARKER" "$GHOSTTY_CONFIG"; then
+    grep -vF "$OMARCHY_MARKER" "$GHOSTTY_CONFIG" | grep -vF "$OMARCHY_INCLUDE" >"$GHOSTTY_CONFIG.tmp"
+    mv "$GHOSTTY_CONFIG.tmp" "$GHOSTTY_CONFIG"
+  fi
+  # Restore lines suspended for omarchy mode, then set exact values.
+  sed -i --follow-symlinks -E "s/^# (theme = mfd-[^ ]*).*/\\1/" "$GHOSTTY_CONFIG"
+  sed -i --follow-symlinks -E "s/^# (background-opacity = [^ ]*).*/\\1/" "$GHOSTTY_CONFIG"
+  set_ghostty_value "theme" "$theme"
+  set_ghostty_value "background-opacity" "1.0"
+}
+
+set_ghostty_omarchy() {
+  # Suspend our theme/opacity lines so the included Omarchy file wins.
+  sed -i --follow-symlinks -E "s/^(theme = mfd-[^ ]*)$/# \\1  ${OMARCHY_TAG}/" "$GHOSTTY_CONFIG"
+  sed -i --follow-symlinks -E "s/^(background-opacity = [^ ]*)$/# \\1  ${OMARCHY_TAG}/" "$GHOSTTY_CONFIG"
+  # Include the Omarchy-generated theme at the top (later keys win in
+  # Ghostty, ours are suspended above so nothing conflicts).
+  if ! grep -qF "$OMARCHY_INCLUDE" "$GHOSTTY_CONFIG"; then
+    {
+      printf '%s\n%s\n' "$OMARCHY_MARKER" "$OMARCHY_INCLUDE"
+      cat "$GHOSTTY_CONFIG"
+    } >"$GHOSTTY_CONFIG.tmp"
+    mv "$GHOSTTY_CONFIG.tmp" "$GHOSTTY_CONFIG"
   fi
 }
 
@@ -103,6 +166,10 @@ collect_nvim_servers() {
 
 sync_neovim() {
   local theme="$1"
+  local scheme="$theme"
+  if [[ "$theme" == "$OMARCHY_MODE" ]]; then
+    scheme="$NVIM_OMARCHY_SCHEME"
+  fi
   if ! command -v nvim >/dev/null 2>&1; then
     return 0
   fi
@@ -111,17 +178,26 @@ sync_neovim() {
     if [[ -z "$server" ]]; then
       continue
     fi
-    timeout 2 nvim --server "$server" --remote-send "<C-\\><C-N>:colorscheme ${theme}<CR>" >/dev/null 2>&1 || true
+    timeout 2 nvim --server "$server" --remote-send "<C-\\><C-N>:colorscheme ${scheme}<CR>" >/dev/null 2>&1 || true
   done < <(collect_nvim_servers | sort -u)
 }
 
 notify_user() {
   local theme="$1"
-  local label="dark"
-  if [[ "$theme" == "$LIGHT_THEME" ]]; then
-    label="light"
+  local message="Theme: ${theme}"
+  if [[ "$theme" == "$OMARCHY_MODE" ]]; then
+    local omarchy_name=""
+    if [[ -f "$OMARCHY_THEME_NAME_FILE" ]]; then
+      omarchy_name="$(tr -d '[:space:]' <"$OMARCHY_THEME_NAME_FILE")"
+    fi
+    if [[ -n "$omarchy_name" ]]; then
+      message="Theme: omarchy/${omarchy_name}"
+    fi
+  elif [[ "$theme" == "$LIGHT_THEME" ]]; then
+    message="Theme: ${theme} (light)"
+  else
+    message="Theme: ${theme} (dark)"
   fi
-  local message="Theme: ${theme} (${label})"
   # The opencode TUI bakes its colors at startup, so it needs one manual
   # keypress after the terminal changes: ctrl+x d (theme_switch_mode).
   local hint="opencode: ctrl+x d"
@@ -132,14 +208,29 @@ notify_user() {
   fi
 }
 
-apply_theme() {
+apply_mfd() {
   local theme="$1"
-  set_ghostty_theme "$theme"
+  set_ghostty_mfd "$theme"
   reload_ghostty
   write_state "$theme"
   sync_neovim "$theme"
   notify_user "$theme"
   printf '%s\n' "$theme"
+}
+
+apply_omarchy() {
+  local current
+  current="$(read_state)"
+  if [[ "$current" == "$LIGHT_THEME" || "$current" == "$DARK_THEME" ]]; then
+    mkdir -p "$STATE_DIR"
+    printf '%s\n' "$current" >"$LAST_MFD_FILE"
+  fi
+  set_ghostty_omarchy
+  reload_ghostty
+  write_state "$OMARCHY_MODE"
+  sync_neovim "$OMARCHY_MODE"
+  notify_user "$OMARCHY_MODE"
+  printf '%s\n' "$OMARCHY_MODE"
 }
 
 main() {
@@ -149,17 +240,32 @@ main() {
   fi
   case "$mode" in
   --amber)
-    apply_theme "$DARK_THEME"
+    apply_mfd "$DARK_THEME"
     ;;
   --paper)
-    apply_theme "$LIGHT_THEME"
+    apply_mfd "$LIGHT_THEME"
     ;;
   --toggle)
-    if [[ "$(read_state)" == "$LIGHT_THEME" ]]; then
-      apply_theme "$DARK_THEME"
-    else
-      apply_theme "$LIGHT_THEME"
+    local current
+    current="$(read_state)"
+    if [[ "$current" == "$OMARCHY_MODE" ]]; then
+      current="$(read_last_mfd)"
     fi
+    if [[ "$current" == "$LIGHT_THEME" ]]; then
+      apply_mfd "$DARK_THEME"
+    else
+      apply_mfd "$LIGHT_THEME"
+    fi
+    ;;
+  --omarchy)
+    if [[ "$(read_state)" == "$OMARCHY_MODE" ]]; then
+      apply_mfd "$(read_last_mfd)"
+    else
+      apply_omarchy
+    fi
+    ;;
+  --mfd)
+    apply_mfd "$(read_last_mfd)"
     ;;
   --status)
     read_state
