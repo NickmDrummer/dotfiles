@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Switch Ghostty + Neovim between three modes:
+# Switch Ghostty + Neovim + terminal opacity between three modes:
 #   mfd-paper (light, default), mfd-amber (dark) and omarchy (system theme).
 #
 # - mfd-paper / mfd-amber are the custom mfd themes (Ghostty `theme = ...`).
@@ -46,6 +46,15 @@ OMARCHY_THEME_NAME_FILE="$HOME/.local/state/omarchy/current/theme.name"
 OMARCHY_MARKER="# mfd-theme-toggle: omarchy mode follows the Omarchy system theme"
 OMARCHY_INCLUDE='config-file = ?"~/.local/state/omarchy/current/theme/ghostty.conf"'
 OMARCHY_TAG="# mfd-theme-toggle: suspended in omarchy mode"
+
+# Compositor opacity presets for terminal windows (mfd modes are fully
+# opaque as always; omarchy mode gets real transparency). Applied via our
+# own toggle file so Omarchy defaults stay untouched and a manually enabled
+# window-opaque toggle still wins (it loads later alphabetically).
+MFD_OPACITY="1 1"
+OMARCHY_OPACITY="0.8 0.8"
+HYPR_OPACITY_TOGGLE_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/omarchy/toggles/hypr"
+HYPR_OPACITY_TOGGLE_FILE="$HYPR_OPACITY_TOGGLE_DIR/mfd-terminal-opacity.lua"
 
 usage() {
   cat <<EOF
@@ -153,6 +162,22 @@ reload_ghostty() {
   fi
 }
 
+# Write our terminal opacity preset to an Omarchy toggle file (loaded last,
+# so it wins over Omarchy defaults) and reload Hyprland to apply it.
+# Best effort outside a Hyprland session; the file still applies on next
+# reload. hyprctl keyword cannot touch the Lua-based config, hence reload.
+set_hypr_opacity() {
+  local opacity="$1"
+  mkdir -p "$HYPR_OPACITY_TOGGLE_DIR"
+  {
+    printf -- '-- Managed by mfd-theme-toggle, do not edit (mode opacity preset).\n'
+    printf 'o.window({ tag = "terminal" }, { opacity = "%s" })\n' "$opacity"
+  } >"$HYPR_OPACITY_TOGGLE_FILE"
+  if command -v hyprctl >/dev/null 2>&1 && [[ -n "${HYPRLAND_INSTANCE_SIGNATURE:-}" ]]; then
+    hyprctl reload >/dev/null 2>&1 || true
+  fi
+}
+
 collect_nvim_servers() {
   if [[ -n "${NVIM_LISTEN_ADDRESS:-}" ]]; then
     printf '%s\n' "$NVIM_LISTEN_ADDRESS"
@@ -226,6 +251,7 @@ notify_user() {
 apply_mfd() {
   local theme="$1"
   set_ghostty_mfd "$theme"
+  set_hypr_opacity "$MFD_OPACITY"
   reload_ghostty
   write_state "$theme"
   sync_neovim "$theme"
@@ -241,6 +267,7 @@ apply_omarchy() {
     printf '%s\n' "$current" >"$LAST_MFD_FILE"
   fi
   set_ghostty_omarchy
+  set_hypr_opacity "$OMARCHY_OPACITY"
   reload_ghostty
   write_state "$OMARCHY_MODE"
   sync_neovim "$OMARCHY_MODE"
