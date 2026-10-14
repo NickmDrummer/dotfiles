@@ -1,3 +1,5 @@
+# mfd-theme-toggle: omarchy mode follows the Omarchy system theme
+config-file = ?"~/.local/state/omarchy/current/theme/ghostty.conf"
 command = /usr/bin/zsh
 # Cursor styling + SSH session terminfo
 # (all shell integration options must be passed together)
@@ -7,8 +9,8 @@ font-family = "Ioskeley Mono Term"
 font-size = 14
 font-feature = zero, calt, dlig, frac
 
-theme = mfd-paper
-background-opacity = 1.0
+# theme = mfd-amber  # mfd-theme-toggle: suspended in omarchy mode
+# background-opacity = 1.0  # mfd-theme-toggle: suspended in omarchy mode
 window-height = 40
 window-width = 90
 window-padding-x = 10
