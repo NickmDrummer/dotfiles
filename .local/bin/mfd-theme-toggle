@@ -8,7 +8,8 @@
 #   ~/.local/state/omarchy/current/theme/ghostty.conf (included with
 #   `config-file`), so Ghostty always matches `omarchy theme set`.
 #   Opacity comes from Omarchy in that mode (glass block included when the
-#   glassy toggle is on). Neovim uses the generated aether colorscheme.
+#   glassy toggle is on). Neovim uses the theme's generated colorscheme
+#   from .../current/theme/neovim.lua (aether for most themes).
 #
 # Applies to Ghostty (config file + SIGUSR2 reload, which is the only
 # signal Ghostty reloads on) and to running Neovim instances (RPC
@@ -39,6 +40,7 @@ STATE_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/mfd-theme"
 STATE_FILE="$STATE_DIR/current"
 LAST_MFD_FILE="$STATE_DIR/last-mfd"
 GHOSTTY_CONFIG="$HOME/.config/ghostty/config"
+OMARCHY_NVIM_FILE="$HOME/.local/state/omarchy/current/theme/neovim.lua"
 OMARCHY_THEME_NAME_FILE="$HOME/.local/state/omarchy/current/theme.name"
 
 OMARCHY_MARKER="# mfd-theme-toggle: omarchy mode follows the Omarchy system theme"
@@ -164,11 +166,24 @@ collect_nvim_servers() {
   done
 }
 
+# Colorscheme the active Omarchy theme wants for Neovim (its LazyVim entry
+# in the generated theme file), or aether when that file is missing.
+omarchy_nvim_scheme() {
+  local scheme=""
+  if [[ -f "$OMARCHY_NVIM_FILE" ]]; then
+    scheme="$(sed -n -E 's/.*colorscheme = "([^"]+)".*/\1/p' "$OMARCHY_NVIM_FILE" | head -n 1)"
+  fi
+  if [[ -z "$scheme" ]]; then
+    scheme="$NVIM_OMARCHY_SCHEME"
+  fi
+  printf '%s' "$scheme"
+}
+
 sync_neovim() {
   local theme="$1"
   local scheme="$theme"
   if [[ "$theme" == "$OMARCHY_MODE" ]]; then
-    scheme="$NVIM_OMARCHY_SCHEME"
+    scheme="$(omarchy_nvim_scheme)"
   fi
   if ! command -v nvim >/dev/null 2>&1; then
     return 0
