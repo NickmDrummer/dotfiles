@@ -7,9 +7,9 @@
 # - omarchy follows the Omarchy system theme via its generated
 #   ~/.local/state/omarchy/current/theme/ghostty.conf (included with
 #   `config-file`), so Ghostty always matches `omarchy theme set`.
-#   Opacity comes from Omarchy in that mode (glass block included when the
-#   glassy toggle is on). Neovim uses the theme's generated colorscheme
-#   from .../current/theme/neovim.lua (aether for most themes).
+#   Transparency is background-only via Ghostty's own background-opacity
+#   (a compositor rule would fade the text too). Neovim uses the theme's
+#   generated colorscheme from .../current/theme/neovim.lua.
 #
 # Applies to Ghostty (config file + SIGUSR2 reload, which is the only
 # signal Ghostty reloads on) and to running Neovim instances (RPC
@@ -47,12 +47,16 @@ OMARCHY_MARKER="# mfd-theme-toggle: omarchy mode follows the Omarchy system them
 OMARCHY_INCLUDE='config-file = ?"~/.local/state/omarchy/current/theme/ghostty.conf"'
 OMARCHY_TAG="# mfd-theme-toggle: suspended in omarchy mode"
 
-# Compositor opacity presets for terminal windows (mfd modes are fully
-# opaque as always; omarchy mode gets real transparency). Applied via our
-# own toggle file so Omarchy defaults stay untouched and a manually enabled
+# Compositor opacity stays fully opaque in every mode (a compositor rule
+# would fade the text along with the background). Transparency lives in
+# Ghostty's own background-opacity, background-only. Applied via our own
+# toggle file so Omarchy defaults stay untouched and a manually enabled
 # window-opaque toggle still wins (it loads later alphabetically).
 MFD_OPACITY="1 1"
-OMARCHY_OPACITY="0.8 0.8"
+OMARCHY_OPACITY="1 1"
+# Ghostty background opacity per mode (background only, text stays opaque).
+MFD_GHOSTTY_OPACITY="1.0"
+OMARCHY_GHOSTTY_OPACITY="0.8"
 HYPR_OPACITY_TOGGLE_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/omarchy/toggles/hypr"
 HYPR_OPACITY_TOGGLE_FILE="$HYPR_OPACITY_TOGGLE_DIR/mfd-terminal-opacity.lua"
 
@@ -133,17 +137,22 @@ set_ghostty_mfd() {
     grep -vF "$OMARCHY_MARKER" "$GHOSTTY_CONFIG" | grep -vF "$OMARCHY_INCLUDE" >"$GHOSTTY_CONFIG.tmp"
     mv "$GHOSTTY_CONFIG.tmp" "$GHOSTTY_CONFIG"
   fi
-  # Restore lines suspended for omarchy mode, then set exact values.
+  # Restore lines suspended for omarchy mode, then set exact values
+  # (fully opaque background in mfd modes).
   sed -i --follow-symlinks -E "s/^# (theme = mfd-[^ ]*).*/\\1/" "$GHOSTTY_CONFIG"
   sed -i --follow-symlinks -E "s/^# (background-opacity = [^ ]*).*/\\1/" "$GHOSTTY_CONFIG"
   set_ghostty_value "theme" "$theme"
-  set_ghostty_value "background-opacity" "1.0"
+  set_ghostty_value "background-opacity" "$MFD_GHOSTTY_OPACITY"
 }
 
 set_ghostty_omarchy() {
-  # Suspend our theme/opacity lines so the included Omarchy file wins.
+  # Suspend our theme line so the included Omarchy file wins.
   sed -i --follow-symlinks -E "s/^(theme = mfd-[^ ]*)$/# \\1  ${OMARCHY_TAG}/" "$GHOSTTY_CONFIG"
-  sed -i --follow-symlinks -E "s/^(background-opacity = [^ ]*)$/# \\1  ${OMARCHY_TAG}/" "$GHOSTTY_CONFIG"
+  # Background translucency comes from Ghostty's own background-opacity
+  # (background only, text stays opaque). Restore any suspended line first,
+  # then set the omarchy value (the generated include carries no opacity).
+  sed -i --follow-symlinks -E "s/^# (background-opacity = [^ ]*).*/\\1/" "$GHOSTTY_CONFIG"
+  set_ghostty_value "background-opacity" "$OMARCHY_GHOSTTY_OPACITY"
   # Include the Omarchy-generated theme at the top (later keys win in
   # Ghostty, ours are suspended above so nothing conflicts).
   if ! grep -qF "$OMARCHY_INCLUDE" "$GHOSTTY_CONFIG"; then
